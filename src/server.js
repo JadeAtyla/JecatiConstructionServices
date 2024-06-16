@@ -23,7 +23,11 @@ app.use(express.static("public"));
 
 // This will be used if you have the ejs file as the viewing engine, html code is inside it too
 // For dynamic database usage
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
+
+app.get("/contact-us", (req, res) => {
+    res.render('contact-us');
+});
 
 const port = process.env.port || 5600;
 app.listen(port, ()=>{
