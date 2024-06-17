@@ -202,7 +202,7 @@
 .jecati {
   width: 100%;
   margin: 0 !important;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -212,7 +212,7 @@
   justify-content: flex-start;
   padding: var(--padding-13xl) var(--padding-13xl) var(--padding-6xl);
   gap: var(--gap-46xl);
-  z-index: 1;
+  z-index: 99;
   text-align: left;
   font-size: var(--font-size-3xl);
   color: var(--color-white);
