@@ -217,7 +217,7 @@
     gap: var(--gap-2xl);
     top: 0;
     z-index: 99;
-    position: sticky;
+    position: fixed;
     max-width: 100%;
     text-align: left;
     font-size: var(--font-size-lg);
@@ -293,6 +293,9 @@
     justify-content: flex-start;
     gap: var(--gap-23xl);
     max-width: 100%;
+  }
+  .about-content-wrapper {
+    margin-top: 108px;
   }
   .about-content-wrapper,
   .frame-section {
