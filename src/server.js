@@ -28,6 +28,12 @@ app.set('view engine', 'ejs');
 app.get("/contact-us", (req, res) => {
     res.render('contact-us');
 });
+app.get("/landing-page", (req, res) => {
+    res.render('landing-page');
+});
+app.get("/about-us", (req, res) => {
+    res.render('about-us');
+});
 
 const port = process.env.port || 5600;
 app.listen(port, ()=>{
