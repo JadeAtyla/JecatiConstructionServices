@@ -1573,7 +1573,7 @@
   margin: 0 !important;
   position: absolute;
   top: -264px;
-  right: 515px;
+  right: 526px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2666,7 +2666,7 @@
   position: absolute;
   margin: 0 !important;
   top: -160px;
-  left: -29px;
+  left: -42px;
   object-fit: cover;
 }
 .first-blog-post-child,
