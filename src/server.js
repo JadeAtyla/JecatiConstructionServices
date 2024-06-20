@@ -69,6 +69,8 @@ app.post("/send-email", async (req, res) => {
     }catch(err){
         console.error(err);
     }
+
+    res.redirect('/contact-us');
 });
 
 const port = process.env.port || 5600;

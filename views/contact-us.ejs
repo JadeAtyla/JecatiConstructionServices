@@ -40,7 +40,7 @@
             <div class="form">
                 <h3>Booking Form</h3>
                 <h2>Send Us Message</h2>
-                <form action="#">
+                <form action="/send-email" method="post">
                     <div class="form-group">
                         <label for="name">Name*</label>
                         <input type="text" id="name" name="name" required>
@@ -61,7 +61,7 @@
                         <label for="message">Enter your question or message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="button" onclick="sendEmail()">Send Message</button>
+                    <button type="submit" class="button">Send Message</button>
                 </form>
                 <p>Rate us on Facebook!</p>
                 <div class="rating">
@@ -170,19 +170,4 @@
         </section>
     </footer>
   </body>
-<script>
-    function sendEmail() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/send-email', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          console.log('Email sent successfully');
-        } else {
-          console.error('Error sending email');
-        }
-      };
-      xhr.send();
-    }
-  </script>
 </html>
