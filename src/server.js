@@ -34,6 +34,9 @@ app.get("/landing-page", (req, res) => {
 app.get("/about-us", (req, res) => {
     res.render('about-us');
 });
+app.get("/services", (req, res) => {
+    res.render('services');
+});
 
 const port = process.env.port || 5600;
 app.listen(port, ()=>{
