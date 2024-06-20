@@ -21,7 +21,7 @@
                     <li><a href="/services" class="nav-links">Services</a></li>
                     <li><a href="/contact-us" class="nav-links">Contact Us</a></li>
                     <li><a href="#" class="nav-links">Projects</a></li>
-                    <li><button class="inquire-now">INQUIRE NOW</button></li>
+                    <li><button class="inquire-now" onclick="inquireNow(popup)">INQUIRE NOW</button></li>
                 </ul>
             </nav>
         </div>
@@ -35,7 +35,7 @@
                 <h3>Rental</h3>
                 <p>We provide materials, equipments and<br>labor to perform construction services.</p>
                 <div class="text-buttons">
-                    <button id="contact-us-button">Contact Us</button>
+                    <button id="contact-us-button" onclick="contactUsRedirect()">Contact Us</button>
                     <button id="learn-more-button">Learn More</button>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <h2>WELCOME TO JECATI</h2>
                 <h3>Jecati is a Construction<br>Company</h3>
                 <div class="hazard-cone-section">
-                    <img src="/images/hazard-cone." alt="">
+                    <img src="/images/hazard-cone.png" alt="">
                     <p>We're in this business since 2017 and we provide the best construction services</p>
                 </div>
                 <p class="content">Jecati Construction Services is committed to excellence, leveraging expertise and teamwork to construct and collaborate on diverse projects. With a focus on innovation and efficiency, we tackle each endeavor with dedication and precision. Our collaborative approach ensures seamless integration and successful outcomes for every project we undertake. From concept to completion, Jecati Construction Services stands as your reliable partner in building a better future.</p>
@@ -310,7 +310,17 @@
             </div>
         </div>
     </footer>
+    <div class="popup">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
+    </div>
 
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <!--script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script-->
+    <script type="text/javascript" src="/js/script.js">
+      
+    </script>
 </body>
 </html>
