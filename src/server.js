@@ -38,6 +38,39 @@ app.get("/services", (req, res) => {
     res.render('services');
 });
 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "jecaticonstructionsevices@gmail.com",
+        pass: "qmumpfafphuslahz"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
+const mainOptions = {
+    from: "jecaticonstructionsevices@gmail.com",
+    to: "jecaticonstructionsevices@gmail.com",
+    subject: "Handshake Trial",
+    html: "This is a handshake trial using nodemailer.<button>Yes</button>"
+}
+
+app.post("/send-email", async (req, res) => {
+    try{
+        transporter.sendMail(mainOptions, function (error, info) {
+            if(error){
+                console.log(error);
+            }else{
+                console.log("Sent Succesfully")
+            }
+        });
+
+    }catch(err){
+        console.error(err);
+    }
+});
+
 const port = process.env.port || 5600;
 app.listen(port, ()=>{
     console.log("Server Running on port: ", port);
