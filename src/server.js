@@ -37,6 +37,9 @@ app.get("/about-us", (req, res) => {
 app.get("/services", (req, res) => {
     res.render('services');
 });
+app.get("/pricing", (req, res) => {
+    res.render('pricing');
+});
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
