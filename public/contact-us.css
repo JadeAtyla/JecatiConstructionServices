@@ -9,7 +9,7 @@ body {
     width: 100%;
     position: relative;
     font-family: 'Inter', sans-serif;
-    background-color: white;
+    background-color: #14213D;
 }
 /* Header */
 header .container {
@@ -84,16 +84,60 @@ span {
     color: orange;
 }
 /* Body/Main */
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-hr{
+
+hr {
     margin-top: 50px;
     width: 90%;
 }
+
+.hero {
+    position: relative;
+    height: 500px; 
+}
+
+.container {
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.contact-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 10px; 
+    margin-left: -930px;
+}
+
+.jct-contact {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    margin-left: -1000px;
+}
+
+.ex-contact {
+    width: 100px;
+    height: auto;
+    border: 1px solid #14213D; 
+}
+
+
 /* Footer */
 footer {
     width: 100%;
