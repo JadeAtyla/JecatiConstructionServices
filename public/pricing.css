@@ -1,0 +1,242 @@
+* {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+/* Header */
+header .container {
+    width: 100%;
+    background-color: #14213D;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    position: fixed;
+    z-index: 100;
+}
+
+header .logo img {
+    max-height: inherit;
+}
+
+header h2 {
+    margin-left: 10px;
+    flex-grow: 1;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}  
+
+.nav-links {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.nav-links:hover {
+    background-color: orange; /* Keep button background white on hover */
+}
+
+nav ul li button.inquire-now {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+nav ul li button.inquire-now:hover {
+    transform: scale(1.1);
+}
+
+span {
+    color: orange;
+}
+/* Body/Main */
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+hr{
+    margin-top: 50px;
+    width: 90%;
+}
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #14213D;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 30px;
+}
+.logo-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.copyright-section {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: black;
+}
+.copyright-section .container{
+    padding: 20px;
+}
+.copyright-section .container a{
+    text-decoration: none;
+    color: white;
+}
+.phone-section{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.about,
+.services,
+.work,
+.phone {
+    position: relative;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.about h2,
+.services h2,
+.work h2,
+.phone h2,
+.copyright p {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.about p,
+.services ul,
+.work ul,
+.phone p {
+    color: white;
+}
+
+.about ul,
+.services ul,
+.work ul,
+.phone ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about .container p,
+.services ul li,
+.work ul li,
+.phone ul li, 
+.copyright-section .container p, 
+.copyright-section .container a{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+.social-section ul{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.phone .container h2{
+    color: orange;
+}
+
+.footer-container .container{
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.footer-container .container p{
+    margin-top: 20px;
+}
+.footer-hr{
+    width: 30%;
+    margin: 20px 0 20px 0;
+    border: 1px solid orange;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    * {
+        font-size: 18px;
+    }
+
+    .footer-content > div {
+        min-width: 100%;
+    }
+
+    .footer-content p,
+    .footer-content div ul li a{
+    font-size: 14px;
+    }
+    nav ul li button.inquire-now{
+     padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    * {
+        font-size: 14px;
+    }
+
+    .footer-content > div {
+        min-width: 100%;
+    }
+    .footer-content p,
+    .footer-content div ul li a{
+    font-size: 11px;
+    }
+    nav ul li button.inquire-now{
+        padding: 3px 7px;
+       }
+}
