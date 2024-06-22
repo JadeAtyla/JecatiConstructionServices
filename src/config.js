@@ -27,6 +27,47 @@ const LoginSchema = new  mongoose.Schema({
     }
 });
 
-const collection = new mongoose.model("students", LoginSchema)
+const LoginSchema1 = new  mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
+    },
+    verificationToken: {
+        type: String,
+        required: true
+    }
+});
 
-module.exports = collection;
+const LoginSchema2 = new  mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true
+    },
+    verificationToken: {
+        type: String,
+        required: true
+    }
+});
+
+// Collection Part 
+const Admin = new mongoose.model("admin", LoginSchema);
+const Services = new mongoose.model("services", LoginSchema1);
+const Transaction = new mongoose.model("transaction", LoginSchema2);
+
+module.exports = {Admin, Services, Transaction};

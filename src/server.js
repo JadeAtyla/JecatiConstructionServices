@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const collection = require('./config');
+const {Admin, Services, Transaction} = require('./config'); //collections
 const nodemailer = require('nodemailer');
 const {v4: uuidv4} = require('uuid');
 
