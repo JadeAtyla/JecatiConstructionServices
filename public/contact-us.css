@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     font-size: 20px;
     margin: 0;
@@ -9,9 +10,13 @@ body {
     width: 100%;
     position: relative;
     font-family: 'Inter', sans-serif;
-    background-color: white;
+    background-color: #14213D;
+    padding-top: 80px; /* Adjust according to the header height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-/* Header */
+
 header .container {
     width: 100%;
     background-color: #14213D;
@@ -22,6 +27,8 @@ header .container {
     padding: 20px 20px;
     position: fixed;
     z-index: 100;
+    top: 0;
+    left: 0;
 }
 
 header .logo img {
@@ -50,7 +57,7 @@ nav ul {
 nav ul li {
     margin-left: 20px;
     position: relative;
-}  
+}
 
 .nav-links {
     text-decoration: none;
@@ -83,17 +90,195 @@ nav ul li button.inquire-now:hover {
 span {
     color: orange;
 }
+
 /* Body/Main */
-main{
+main {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-hr{
+
+hr {
     margin-top: 50px;
     width: 90%;
 }
+
+.hero {
+    position: relative;
+    height: 500px; /* Adjust height as needed */
+}
+
+.container {
+    position: relative;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.contact-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 10px; 
+    margin-left: -905px;
+}
+
+.jct-contact {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    margin-left: -980px;
+}
+
+.ex-contact {
+    display: block;
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    margin: 20px auto; /* Center the image horizontally */
+    height: auto;
+}
+
+
+/* Form Styles */
+.form {
+    flex: 1 1 45%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form h3, .form h2 {
+    margin: 0 0 10px;
+    font-weight: normal;
+}
+
+.form h3 {
+    color: #333;
+    font-size: 24px;
+}
+
+.form h2 {
+    color: #555;
+    font-size: 18px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Rating Styles */
+.rating {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.rating i {
+    color: #ffcc00;
+    margin-right: 5px;
+}
+
+/* Information Styles */
+.info {
+    flex: 1 1 45%;
+    padding: 20px;
+}
+
+.info h3, .info h2 {
+    margin: 0 0 10px;
+    font-weight: normal;
+}
+
+.info h3 {
+    color: #333;
+    font-size: 24px;
+}
+
+.info h2 {
+    color: #555;
+    font-size: 18px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.info-item h4 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #333;
+}
+
+.info-item p {
+    margin: 0;
+    color: #555;
+}
+
+.ex-contact {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .form, .info {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
 /* Footer */
 footer {
     width: 100%;
@@ -101,6 +286,7 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: auto; /* Ensure footer stays at the bottom */
 }
 
 .footer-container {
@@ -109,7 +295,8 @@ footer {
     justify-content: space-between;
     padding: 30px 30px;
 }
-.logo-section{
+
+.logo-section {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -123,20 +310,24 @@ footer {
     align-items: center;
     flex-direction: column;
     color: white;
-    background-color: black;
+    background-color: #080E1C;
 }
-.copyright-section .container{
+
+.copyright-section .container {
     padding: 20px;
 }
-.copyright-section .container a{
+
+copyright-section .container a {
     text-decoration: none;
     color: white;
 }
-.phone-section{
+
+.phone-section {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
+
 .about,
 .services,
 .work,
@@ -174,32 +365,36 @@ footer {
 .about .container p,
 .services ul li,
 .work ul li,
-.phone ul li, 
-.copyright-section .container p, 
-.copyright-section .container a{
+.phone ul li,
+.copyright-section .container p,
+copyright-section .container a {
     color: white;
     margin-bottom: 5px;
     font-size: 15px;
 }
-.social-section ul{
+
+.social-section ul {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
-.phone .container h2{
+
+.phone .container h2 {
     color: orange;
 }
 
-.footer-container .container{
+.footer-container .container {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
-.footer-container .container p{
+
+.footer-container .container p {
     margin-top: 20px;
 }
-.footer-hr{
+
+.footer-hr {
     width: 30%;
     margin: 20px 0 20px 0;
     border: 1px solid orange;
@@ -216,11 +411,12 @@ footer {
     }
 
     .footer-content p,
-    .footer-content div ul li a{
-    font-size: 14px;
+    .footer-content div ul li a {
+        font-size: 14px;
     }
-    nav ul li button.inquire-now{
-     padding: 5px 10px;
+
+    nav ul li button.inquire-now {
+        padding: 5px 10px;
     }
 }
 
@@ -232,11 +428,13 @@ footer {
     .footer-content > div {
         min-width: 100%;
     }
+
     .footer-content p,
-    .footer-content div ul li a{
-    font-size: 11px;
+    .footer-content div ul li a {
+        font-size: 11px;
     }
-    nav ul li button.inquire-now{
+
+    nav ul li button.inquire-now {
         padding: 3px 7px;
-       }
+    }
 }
