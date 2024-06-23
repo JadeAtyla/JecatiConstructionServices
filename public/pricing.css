@@ -91,62 +91,98 @@ main{
     flex-direction: column;
     align-items: center;
 }
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color: orange;
+}
+a:active{
+    transform: scale(0.9);
+}
+.body-container{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+.body-container h1{
+    font-size: 32px;
+    color: orange;
+}
+.body-container h2{
+    font-size: 26px;
+}
 hr{
     margin-top: 50px;
     width: 90%;
+    margin-bottom: 50px;
 }
-.service-grid{
+#service-grid, 
+#construction-grid{
     display: flex;
     flex-wrap: wrap;
-    padding: 100px;
+    padding: 50px;
     gap: 50px;
     color: white;
+    justify-content: center;
 }
-.service-card{
+.service-card, 
+.construction-card{
     margin-top: 100px;
-    flex-grow: 1;
-    flex-basis: 300px;
+    width: 300px;
     background-color: #0A1222;
-    padding: 50px;
+    padding: 50px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     border: 5px solid orange;
     border-radius: 40px;
+    color: white;
 }
-.service-card .text-contents{
+.service-card .text-contents, 
+.construction-card .text-contents{
     padding-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 1;
 }
-.service-card .text-contents .excavator-text{
+.service-card .text-contents .excavator-text,
+.construction-card .text-contents .excavator-text{
     position: absolute;
     color: #131F3A;
     z-index: -1;
     margin-top: -20px;
     font-size: 30px;
 }
-.service-card .text-contents .excavator-name{
+.service-card .text-contents .excavator-name,
+.construction-card .text-contents .excavator-name{
     color: orange;
 }
-.service-card .text-contents h4{
-    
+.service-card .text-contents h4,
+.construction-card .text-contents h4{
+    font-size: 16px;
 }
-.service-card img{
+.service-card img,
+.construction-card img{
     margin-top: -150px;
     width: 200px;
     height: 200px;
 }
-.service-card img:hover{
+/* .service-card img:hover,
+.construction-card img:hover{
     transform: scale(1.3);
-}
-.service-card:hover{
+} */
+.service-card:hover,
+.construction-card:hover{
     transform: scale(1.1);
 }
-.service-card img:active , .service-card:active{
+.service-card img:active, .service-card:active,
+.construction-card img:active, .construction-card:active{
     transform: scale(1);
 }
 /* Footer */
