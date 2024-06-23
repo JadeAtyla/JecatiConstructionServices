@@ -145,11 +145,10 @@ hr{
     transition: transform 0.3s;
 }
 
-#services .container .services-grid .service-images {
-    margin-bottom: 10px;
-    width: 100%;
+#services .container .services-grid .service-images{
+    margin-bottom: 30px;
+    width: 200px;
     height: 200px;
-    object-fit: cover;
 }
 
 #services .cta {
@@ -172,14 +171,6 @@ hr{
     color: white;
     transition: background-color 0.3s, color 0.3s;
 }
-
-@media (max-width: 768px) {
-    #services .container .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 
 /* Footer */
 footer {
