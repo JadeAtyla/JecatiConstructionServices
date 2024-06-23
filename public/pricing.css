@@ -91,11 +91,11 @@ main{
     flex-direction: column;
     align-items: center;
 }
-a{
+main a{
     color: white;
     text-decoration: none;
 }
-a:hover{
+main a:hover{
     color: orange;
 }
 a:active{
