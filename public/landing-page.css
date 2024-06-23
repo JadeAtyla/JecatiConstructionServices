@@ -52,6 +52,7 @@ nav ul {
 nav ul li {
     margin-left: 20px;
     position: relative;
+
 }  
 
 .nav-links {
@@ -65,7 +66,8 @@ nav ul li {
 }
 
 .nav-links:hover {
-    background-color: orange; /* Keep button background white on hover */
+    background-color: orange;
+     /* Keep button background white on hover */
 }
 
 nav ul li button.inquire-now {
@@ -694,7 +696,7 @@ footer .copyright {
 }
 
 .popup {
-  visibility: hidden;
+  display: none;
   position: fixed;
   top: 50%;
   right: 10%;
