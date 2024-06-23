@@ -266,6 +266,13 @@ hr {
     height: auto;
     max-width: 400px;
 }
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 10%;
+  z-index: 100;
+}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
