@@ -92,6 +92,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     padding: 90px 0;
+    gap: 50px;
 }
 #homepage{
     width: 100%;
@@ -311,6 +312,7 @@ main{
     padding: 50px;
     gap: 20px;
 }
+
 #services .container h2{
     color: orange;
     font-weight: bold;
@@ -614,7 +616,7 @@ main{
     color: orange;
 }
 #blog .container .header-label h2{
-    font-size: 32px;
+    font-size: 50px;
     color: #14213D;
 }
 /* Footer */
@@ -655,8 +657,20 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-.copyright p, .copyright a{
+#copyright{
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#copyright p, #copyright a{
     font-size: 15px;
+}
+#copyright p{
+    margin-bottom: 5px;
 }
 a{
     color: white;
