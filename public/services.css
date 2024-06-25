@@ -134,17 +134,17 @@ hr{
 }
 
 #services .container .services-grid .service-card {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 50px 20px;
     justify-content: center;
     align-items: center;
     background-color: white;
+    gap: 20px;
     color: #14213D;
     box-shadow: 2px 2px 10px 0 grey;
-    width: 100%;
-    max-width: 300px; /* Ensures cards do not exceed 300px width */
-    text-align: center;
+    width: 300px;
 }
 
 #services .container .services-grid .service-card:hover {
@@ -152,7 +152,7 @@ hr{
     transition: transform 0.3s;
 }
 
-#services .container .services-grid .service-images{
+#services .container .services-grid .service-images {
     margin-bottom: 30px;
     width: 200px;
     height: 200px;
@@ -160,9 +160,11 @@ hr{
 
 #services .cta {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
 }
-
+#services .cta h3 {
+    color:black
+}
 #services .cta button {
     padding: 10px 20px;
     background-color: orange;
@@ -177,6 +179,36 @@ hr{
     background-color: #14213D;
     color: white;
     transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.service-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    
+    margin-bottom: 10px;
+    margin-left: -905px;
+}
+.text-overlay {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+.jct-services {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    margin-left: -980px;
 }
 
 /* Footer */
