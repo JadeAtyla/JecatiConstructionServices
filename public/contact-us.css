@@ -47,6 +47,14 @@ header h2 {
     font-weight: bold;
 }
 
+.jecati {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.jecati:hover {
+    cursor: pointer;
+}
 nav ul {
     display: flex;
     list-style: none;

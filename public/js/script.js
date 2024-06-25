@@ -1,5 +1,12 @@
 const popup = document.getElementsByClassName('popup');
 const submitInquiryButton = document.getElementsByClassName('submit-inquiry');
+const jecati = document.getElementsByClassName('jecati')
+
+jecati[0].addEventListener("click", landingPageRedirect);
+
+function landingPageRedirect() {
+  window.location.replace('/landing-page');
+}
 function contactUsRedirect() {
   window.location.replace('/contact-us');
 }
