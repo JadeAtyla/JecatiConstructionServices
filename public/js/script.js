@@ -1,6 +1,7 @@
 const popup = document.getElementsByClassName('popup');
 const submitInquiryButton = document.getElementsByClassName('submit-inquiry');
 const jecati = document.getElementsByClassName('jecati')
+const closeBtn = document.getElementById('closeBtn');
 
 jecati[0].addEventListener("click", landingPageRedirect);
 
