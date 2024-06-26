@@ -12,7 +12,7 @@ body {
     width: 100%;
     position: relative;
     font-family: 'Inter', sans-serif;
-    background-color: #14213D;
+    background-color: #ffffff;
     padding-top: 80px; /* Adjust according to the header height */
     display: flex;
     flex-direction: column;
@@ -119,7 +119,7 @@ span {
 main{
     display: flex;
     flex-wrap: wrap;
-    padding: 90px 0;
+    padding: 10px 0;
     gap: 50px;
 }
 #homepage{
