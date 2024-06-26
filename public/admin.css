@@ -64,6 +64,22 @@ h1, h2{
     display: block;
 }
 
+.search {
+    margin-bottom: 10px;
+}
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: fit-content; 
+    background-color: white;
+    cursor: pointer; 
+    outline: none; 
+    color: #14213D;
+    width: 50%;
+
+}
 .form-group {
     margin-bottom: 20px;
 }
