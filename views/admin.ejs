@@ -99,44 +99,48 @@
             <option value="Sort By Ascending Order">Sort By Ascending Order</option>
         </select>
         <div style="overflow-x: auto;">
-            <% if (transaction && transaction.length> 0) { %>
+            <% if (transaction && transaction.length > 0) { %>
                 <table id="transaction-table">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Date</th>
-                            <th>Number</th>
+                            <th>Contact Person</th>
+                            <th>Contact Number</th>
+                            <th>Email</th>
+                            <th>Services</th>
+                            <th>Starting Date</th>
+                            <th>Due Date</th>
                             <th>Location</th>
-                            <th>Person</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% transaction.forEach((row, index)=> { %>
+                        <% transaction.forEach((row, index) => { %>
                             <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= row.contactPerson %></td>
+                                <td><%= row.contactNumber %></td>
+                                <td><%= row.email %></td>
                                 <td>
-                                    <%= index + 1%>
+                                    <select id="<%= row.email %>">
+                                        <% row.services.forEach(service => { %>
+                                            <option value="<%= service %>"><%= service %></option>
+                                        <% }) %>
+                                    </select>
                                 </td>
-                                <td>
-                                    <%= row.date %>
-                                </td>
-                                <td>
-                                    <%= row.number %>
-                                </td>
-                                <td>
-                                    <%= row.location %>
-                                </td>
-                                <td>
-                                    <%= row.person %>
-                                </td>
+                                <td><%= row.startingDate %></td>
+                                <td><%= row.dueDate %></td>
+                                <td><%= row.location %></td>
+                                <td><%= row.status %></td>
                                 <td><button>Edit</button></td>
                             </tr>
-                            <% }) %>
+                        <% }); %>
                     </tbody>
                 </table>
-                <% } else { %>
-                    <h1>No Data</h1>
-                    <% } %>
+            <% } else { %>
+                <h1>No Data</h1>
+            <% } %>                   
 
         </div>
     </div>
@@ -151,29 +155,39 @@
             <button id="addService" onclick="window.location.href='/admin/services'">+ Add Service</button>
         </div>
         <div style="overflow-x: auto;">
-            <% if (services && services> 0) { %>
-                <table id="services-table">
+            <% if (services && services.length> 0) { %>
+                <table id="transaction-table">
                     <thead>
                         <tr>
-                            <th>Rental Service</th>
+                            <th>No. </th>
+                            <th>Category</th>
                             <th>Unit</th>
                             <th>Price</th>
+                            <th>Added Date</th>
+                            <th>Availability</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <% services.forEach((row, index)=> { %>
                             <tr>
                                 <td>
-                                    <%= index+1 %>
+                                    <%= index + 1%>
                                 </td>
                                 <td>
-                                    <%= row.rentalService %>
+                                    <%= row.category %>
                                 </td>
                                 <td>
                                     <%= row.unit %>
                                 </td>
                                 <td>
                                     <%= row.price %>
+                                </td>
+                                <td>
+                                    <%= row.addedDate %>
+                                </td>
+                                <td>
+                                    <%= row.availability %>
                                 </td>
                                 <td><button>Edit</button></td>
                             </tr>
