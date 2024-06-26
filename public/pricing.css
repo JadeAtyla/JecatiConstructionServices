@@ -1,19 +1,26 @@
+/* General Styles */
 * {
     font-size: 20px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: transform 0.5s ease;
+
 }
 
 body {
     width: 100%;
     position: relative;
     font-family: 'Inter', sans-serif;
+    background-color: #14213D;
+    padding-top: 80px; /* Adjust according to the header height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-/* Header */
+
+/* Header Styles */
 header .container {
-    width: 100%;
+    width: calc(100% - 3px); /* Adjust the width to allow space for rounded corners */
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
@@ -22,6 +29,11 @@ header .container {
     padding: 20px 20px;
     position: fixed;
     z-index: 100;
+    top: 0;
+    left: 1.25px; /* Centering the container */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+    box-shadow: 0 5px #999;
 }
 
 header .logo img {
@@ -39,14 +51,17 @@ header h2 {
     padding: 10px 15px;
     font-weight: bold;
 }
+
 .jecati {
     display: flex; 
     justify-content: center; 
     align-items: center;
 }
+
 .jecati:hover {
     cursor: pointer;
 }
+
 nav ul {
     display: flex;
     list-style: none;
@@ -57,7 +72,7 @@ nav ul {
 nav ul li {
     margin-left: 20px;
     position: relative;
-}  
+}
 
 .nav-links {
     text-decoration: none;
@@ -79,17 +94,26 @@ nav ul li button.inquire-now {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 50px; /* Make the button round */
     font-weight: bold;
+    box-shadow: 0 5px #999; /* Add shadow for 3D effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
 nav ul li button.inquire-now:hover {
     transform: scale(1.1);
+    box-shadow: 0 8px #666; /* Adjust shadow on hover for deeper effect */
+}
+
+nav ul li button.inquire-now:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px #666; /* Adjust shadow on active for pressed effect */
 }
 
 span {
     color: orange;
 }
+
 /* Body/Main */
 main{
     width: 100%;
