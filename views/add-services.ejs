@@ -5,56 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
-    <style>
-        body{
-            padding: 150px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .form-group input {
-            width: calc(100% - 10px);
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .form-group button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            transition: display 2s ease-in-out;
-        }
-        #save{
-            background-color: #4CAF50;
-        }
-        #cancel{
-            background-color: tomato;
-        }
-        .form-group button:active {
-            transform: scale(0.9);
-        }
-    </style>
+    <link rel="stylesheet" href="/unipop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <form action="/add-service" method="post" class="form-group">
             <label for="rentalService" class="content-label">Rental Service:</label>
-            <input type="text" name="rentalService" id="rentalService">
+            <select name="category" id="category">
+                <option value="construction services">Construction Services</option>
+                <option value="heavy equipment rental">Heavy Equipment Rental</option>
+            </select>
             <label for="unit" class="content-label">Unit:</label>
             <input type="text" name="unit" id="unit">
             <label for="price" class="content-label">Price:</label>
