@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Jecati Construction Services</h2>
+        <ul>
+            <li><button onclick="showSection('profile')">Profile</button></li>
+            <li><button onclick="showSection('services')">Services</button></li>
+            <li><button onclick="showSection('transactions')">Transactions</button></li>
+            <!-- <li><button onclick="showSection('services')">Cancelled</button></li>
+            <li><button onclick="showSection('services')">On Going</button></li> -->
+        </ul>
+        <p>Footer text</p>
+    </div>
+    <div id="profile" class="content">
+        <h1>Edit Profile</h1>
+        <div class="form-group">
+            <label for="profileName">Profile Name:</label>
+            <input type="text" id="profileName" value="John Doe">
+        </div>
+        <div class="form-group">
+            <label for="contactInfo">Contact Info:</label>
+            <input type="text" id="contactInfo" value="john.doe@example.com">
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" value="johndoe123">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" value="password123">
+        </div>
+        <div class="form-group">
+            <button id="edit">Edit</button>
+            <button id="save">Save Changes</button>
+            <button id="cancel">Cancel</button>
+        </div>
+        <h2>Past Users/Admins Table</h2>
+        <select name="sorter" id="admin-sorter">
+            <option value="Sort By Name">Sort By Name</option>
+            <option value="Sort By Descending Order">Sort By Descending Order</option>
+            <option value="Sort By Ascending Order">Sort By Ascending Order</option>
+        </select>
+        <div style="overflow-x: auto;">
+            <% if (admin && admin.length> 0) { %>
+                <table id="admins-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% admin.forEach((row, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index + 1 %>
+                                </td>
+                                <td>
+                                    <%= row.name %>
+                                </td>
+                                <td>
+                                    <%= row.username %>
+                                </td>
+                                <td>
+                                    <%= row.startingDate %>
+                                </td>
+                                <td>
+                                    <%= row.endDate %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h1>No Data</h1>
+                    <% } %>
+
+        </div>
+    </div>
+    <div id="transactions" class="content">
+        <h1>Transactions</h1>
+        <select name="sorter" class="admin-sorter">
+            <option value="Sort By Name">Sort By Name</option>
+            <option value="Sort By Descending Order">Sort By Descending Order</option>
+            <option value="Sort By Ascending Order">Sort By Ascending Order</option>
+        </select>
+        <div style="overflow-x: auto;">
+            <% if (transaction && transaction.length> 0) { %>
+                <table id="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Date</th>
+                            <th>Number</th>
+                            <th>Location</th>
+                            <th>Person</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% transaction.forEach((row, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index + 1%>
+                                </td>
+                                <td>
+                                    <%= row.date %>
+                                </td>
+                                <td>
+                                    <%= row.number %>
+                                </td>
+                                <td>
+                                    <%= row.location %>
+                                </td>
+                                <td>
+                                    <%= row.person %>
+                                </td>
+                                <td><button>Edit</button></td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h1>No Data</h1>
+                    <% } %>
+
+        </div>
+    </div>
+    <div id="services" class="content">
+        <h1>Services</h1>
+        <div class="top-buttons">
+            <select name="sorter" id="admin-sorter">
+                <option value="Sort By Name">Sort By Name</option>
+                <option value="Sort By Descending Order">Sort By Descending Order</option>
+                <option value="Sort By Ascending Order">Sort By Ascending Order</option>
+            </select>
+            <button id="addService" onclick="window.location.href='/admin/services'">+ Add Service</button>
+        </div>
+        <div style="overflow-x: auto;">
+            <% if (services && services> 0) { %>
+                <table id="services-table">
+                    <thead>
+                        <tr>
+                            <th>Rental Service</th>
+                            <th>Unit</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% services.forEach((row, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%= row.rentalService %>
+                                </td>
+                                <td>
+                                    <%= row.unit %>
+                                </td>
+                                <td>
+                                    <%= row.price %>
+                                </td>
+                                <td><button>Edit</button></td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                    <h1>No Data</h1>
+                    <% } %>
+        </div>
+    </div>
+</body>
+<script src="/js/admin.js"></script>
+
+</html>
