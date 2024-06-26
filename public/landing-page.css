@@ -215,6 +215,7 @@ main{
     flex-wrap: wrap;
     flex-direction: row;
     padding: 0 10%;
+    border-color: white;
 }
 
 #floating-specialization .sub-container{
@@ -225,7 +226,7 @@ main{
     flex-basis: 200px;
     padding: 30px 20px;
     align-items: center;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 #floating-specialization .sub-container h2{
     font-size: 25px;
