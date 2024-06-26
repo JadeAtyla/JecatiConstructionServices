@@ -1,0 +1,370 @@
+
+
+body {
+    background-color:#ffffff;
+    /* overflow-x: hidden; */
+}
+        
+        .circle {
+            position: absolute;
+            top: -260px; /* y coordinate */
+            left: -92px; /* x coordinate */
+            width: 1562px;
+            height: 600px;
+            background-color: #14213d;
+            border-radius: 70%;
+        }
+        .aboutus {
+            position: absolute;
+            top: 140px; /* y coordinate */
+            left: 600px; /* x coordinate */
+            margin-bottom: 20px; /* Adjust this value to control the spacing from the bottom */
+            color: rgb(255, 255, 255);
+            font-size: 37px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 550;
+        }
+
+        .descriptionone {
+            position: absolute;
+            top: 200px; /* y coordinate */
+            left: 545px; /* x coordinate */
+            margin-bottom: 20px; /* Adjust this value to control the spacing from the bottom */
+            color: #f0eded;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 100;
+
+        }
+
+        .wordone{
+            position: absolute;
+            top: 260px; /* y coordinate */
+            left: 630px; /* x coordinate */
+            margin-bottom: 20px; /* Adjust this value to control the spacing from the bottom */
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        .wordtwo{
+            position: absolute;
+            top: 430px; /* y coordinate */
+            left: 200px; /* x coordinate */
+            margin-bottom: 20px; /* Adjust this value to control the spacing from the bottom */
+            color: #FCA311;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+
+        .wordthree{
+            position: absolute;
+            top: 470px; /* y coordinate */
+            left: 135px   ; /* x coordinate */
+            line-height: 1.0;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 32px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 820;
+        }
+
+        .lineone {
+            position: absolute;
+            top: 60.5%; /* Adjust this to position the line vertically within the circle */
+            left: 55%; /* Adjust this to position the line horizontally within the circle */
+            transform: translate(-50%, -50%); /* Center the SVG */
+            width: 100%; /* Make SVG take full width of the circle */
+            height: auto; /* Adjust height automatically */
+        }
+
+        .descriptiontwo{
+            max-width: 1090px;
+            position: absolute;
+            top: 565px; /* y coordinate */
+            left: 135px   ; /* x coordinate */
+            line-height: 1.0;
+            text-align: justify;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #000000;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 100;
+            margin: 0 auto;
+            line-height: 1.4;
+            
+        }
+
+        .descriptionthree{
+            max-width: 1090px;
+            position: absolute;
+            top: 720px; /* y coordinate */
+            left: 135px   ; /* x coordinate */
+            line-height: 1.0;
+            text-align: justify;
+            margin-bottom: 19px; /* Adjust this value to control the spacing from the bottom */
+            color: #000000;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 100;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .roundedrectangle {
+            position: absolute;
+            top: 1000px;
+            left: 210px;
+            width: 280px;
+            height: 340px;
+            background-color: #14213D;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+        }
+        .roundedrectangletwo {
+            position: absolute;
+            top: 1000px;
+            left: 830px;
+            width: 280px;
+            height: 340px;
+            background-color: #14213D;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+        }
+        .roundedrectanglethree {
+            position: absolute;
+            top: 1000px;
+            left:520px;
+            width: 280px;
+            height: 340px;
+            background-color: #14213D;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+        }
+
+        .roundedrectanglefour {
+            position: absolute;
+            top: 1685px;
+            left:305px;
+            width: 680px;
+            height: 200px;
+            background-color: #14213D;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+        }
+
+        .rectangle {
+            position: absolute;
+            top: 962px;
+            left: 251px;
+            width: 180px;
+            height: 18px;
+            background-color: #FCA311;
+            border: 2px solid #FCA311;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px; /* Example padding */
+            margin-top: 20px; /* Example margin */
+        }
+
+        .rectangletwo {
+            position: absolute;
+            top: 962px;
+            left: 559px;
+            width: 180px;
+            height: 18px;
+            background-color: #FCA311;
+            border: 2px solid #FCA311;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px; /* Example padding */
+            margin-top: 20px; /* Example margin */
+        }
+
+        .rectanglethree {
+            position: absolute;
+            top: 962px;
+            left: 869px;
+            width: 180px;
+            height: 18px;
+            background-color: #FCA311;
+            border: 2px solid #FCA311;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px; /* Example padding */
+            margin-top: 20px; /* Example margin */
+        }
+
+        .rectanglefour{
+            position: absolute;
+            top: 1420px;
+            left: -20px;
+            width: 1350px;
+            height: 95px;
+            background-color: #f0f0f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px; /* Example padding */
+            margin-top: 20px; /* Example margin */
+        }
+        
+        .mission{
+            position: absolute;
+            top: 988px;
+            left: 310px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        .vision{
+            position: absolute;
+            top: 988px;
+            left: 622px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        .values{
+            position: absolute;
+            top: 988px;
+            left: 933px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+        
+        .pc{
+            position: absolute;
+            top: 1465px;
+            left: 304px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 32px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 1000;
+        }
+        .hc{
+            position: absolute;
+            top: 1465px;
+            left: 602px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 32px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 1000;
+        }
+        .ye{
+            position: absolute;
+            top: 1465px;
+            left: 945px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 32px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 1000;
+        }
+
+        .project{
+            position: absolute;
+            top: 1510px;
+            left: 262px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 1000;
+        }
+        .customers{
+            position: absolute;
+            top: 1510px;
+            left: 578px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 1000;
+        }
+
+        .years{
+            position: absolute;
+            top: 1510px;
+            left: 892px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #14213D;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+        }
+       
+        ul.missionlist{
+            max-width: 110;
+            position: absolute;
+            top: 1135px;
+            left: 203px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #ffffff;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 200;
+            line-height: 1.6;
+            text-align: justify;    
+        }
+
+        .visionlist{    
+            max-width: 210px;
+            position: absolute;
+            top: 1135px;
+            left: 520px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #ffffff;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 200;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .valuelist{    
+            max-width: 210px;
+            position: absolute;
+            top: 1135px;
+            left: 830px;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #ffffff;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 200;
+            line-height: 1.6;
+            text-align: justify;
+        }
+       
+        .wordfour{
+            position: absolute;
+            top: 1745px   ; /* x coordinate */
+            left: 345px;
+            line-height: 1.0;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #FCA311;
+            font-size: 18px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 720;
+        }
+
+        .wordtfive{
+            position: absolute;
+            top: 1780px; /* y coordinate */
+            left: 345px   ; /* x coordinate */
+            line-height: 1.0;
+            margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+            color: #ffffff;
+            font-size: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 820;
+        }
+       
+
+       

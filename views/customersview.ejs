@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button and Window</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="openWindowBtn">Open Window</button>
+    <div id="window">
+        <span id="closeBtn">&times;</span>
+
+        <div id="bottomRectangle"></div>
+        <img id="windowImage" src="worker.jpg" alt="Window Image">
+        <div id="copyright">Copyright © 2024 Jecati Construction Services powered by TAKDA</div>
+        <div id="policy">Privacy Policy</div>
+
+        <div id="inquire">Inquire<br> Now</div>
+        <div id="connect">Connect with us today!</div>
+        
+        <div id="interested">Interested in our service?</div>
+        <div id="fill"> Fill in the blanks below and we'll get back to you promptly!</div>
+
+        <input id="fullNameInput" type="text" placeholder="Full Name">
+        <input id="contact" type="text" placeholder="Contact">
+        <input id="gmail" type="text" placeholder="Gmail Account: ex.    jhonspeigths@gmail.com">
+
+        <div id="service">Service</div>
+        <div id="equipment">Heavy Equipment Rental:</div>
+        <div id="construction">Construction:</div>
+         <!-- Simple Dropdown -->
+         <select id="simpleDropdown" placeholder="PC 20- 1200/ hr">
+            <option value="option1" >PC 20- 1200/ hr</option>
+            <option value="option2">PC 30- 1200/ hr</option>
+            <option value="option3">PC 150- 1800/ hr</option>
+            <option value="option4">PC 170- 2000/ hr</option>
+            <option value="option5">PC200- 2300/hr</option>
+            <option value="option6">2 Mini dump truck - 2000/trip</option>
+        </select>
+
+        <select id="simpleDropdowntwo" placeholder="Labor - 600 to 800">
+            <option value="option1">Labor - 600 to 800/day personnel</option>
+            <option value="option2">Equipment - 30hr down payment</option>
+            <option value="option3">Diesel - 2000/day</option>
+        </select>
+        
+          <div id="date">Date and Time</div>
+          <div id="duration">Duration and Due Date</div>
+
+             <!-- Date and Time Inputs -->
+        <input id="dateInput" type="date">
+        <input id="timeInput" type="time">
+          <!-- Date and Time Inputs -->
+          <input id="dateInput2" type="date">
+          <input id="timeInput2" type="time">
+
+
+          <input id="loc" type="text" placeholder="Location">
+          <input id="droploc" type="text" placeholder="Drop Location">
+
+          <button id="submitBtn">Submit</button>
+          <button id="cancelBtn">Cancel</button>
+
+    </div>
+
+    
+
+
+    <script src="action.js"></script>
+</body>
+</html>
