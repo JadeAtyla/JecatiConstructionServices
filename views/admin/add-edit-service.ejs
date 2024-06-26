@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="/unipop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form action="/admin/add-edit-service/<%= service ? service._id : '' %>" method="post" enctype="multipart/form-data" class="form-group">
+            <label for="rentalService" class="content-label">Rental Service:</label>
+            <select name="category" id="category">
+                <option value="construction services" <%= service && service.category === 'construction services' ? 'selected' : '' %>>Construction Services</option>
+                <option value="heavy equipment rental" <%= service && service.category === 'heavy equipment rental' ? 'selected' : '' %>>Heavy Equipment Rental</option>
+            </select>
+            <% if (!service) { %>
+                <label for="image" class="content-label">Image:</label>
+                <input type="file" name="image" id="image">
+              <% } else { %>
+                <div></div>
+              <% } %>              
+            <label for="unit" class="content-label">Unit:</label>
+            <input type="text" name="unit" id="unit" value="<%= service ? service.unit : '' %>">
+            <label for="price" class="content-label">Price:</label>
+            <input type="text" name="price" id="price" value="<%= service ? service.price : '' %>">
+            <button type="submit" id="save"><%= service ? 'Update Service' : 'Add Service' %></button>
+            <button id="cancel">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>

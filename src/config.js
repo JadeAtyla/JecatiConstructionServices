@@ -12,7 +12,7 @@ const dateNow = moment().tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
 
 // Create a Schema 
 const adminSchema = new mongoose.Schema({
-    username: {
+    email: {
         type: String,
         required: true
     },
@@ -30,13 +30,13 @@ const adminSchema = new mongoose.Schema({
         required: true
     },
     startingDate: {
-        type: Date,
+        type: String,
         default: dateNow,
         required: true
     },
     endDate: {
-        type: Date,
-        required: true
+        type: String,
+        required: false
     },
     verified: {
         type: Boolean,
@@ -51,7 +51,6 @@ const adminSchema = new mongoose.Schema({
 const servicesSchema = new mongoose.Schema({
     image:{
         type: String,
-        required: true
     },
     category: {
         type: String,
@@ -92,17 +91,33 @@ const transactionSchema = new mongoose.Schema({
         required: true 
     },
     services: [
-        { 
-            type: String, 
-            enum: ['construction services', 'heavy equipment rental'],
-            required: true 
+        {
+            type: {
+                type: String,
+                enum: ['construction services', 'heavy equipment rental'],
+                required: true
+            },
+            subcategory: {
+                type: String,
+                required: true,
+                validate: {
+                    validator: function(subcategory) {
+                        const subcategories = {
+                            'construction services': ['labor', 'diesel', 'dumptruck'],
+                            'heavy equipment rental': ['komatsu pc 20', 'komatsu pc 30', 'komatsu pc 150']
+                        };
+                        return subcategories[this.type].includes(subcategory);
+                    },
+                    message: props => `${props.value} is not a valid subcategory for ${props.path}`
+                }
+            }
         }
     ],
     startingDate: {
          type: Date, 
-         default: dateNow,
+         default: Date.now,
          required: true 
-        },
+    },
     dueDate: { 
         type: Date, 
         required: true 
@@ -112,7 +127,8 @@ const transactionSchema = new mongoose.Schema({
         required: true 
     },
     status: { 
-        type: ['paid', 'unpaid', 'on-going', 'overdue'], 
+        type: String,
+        enum: ['paid', 'unpaid', 'on-going', 'overdue'], 
         required: true 
     }
 });
@@ -122,4 +138,4 @@ const Admin = new mongoose.model("admins", adminSchema);
 const Services = new mongoose.model("services", servicesSchema);
 const Transaction = new mongoose.model("transactions", transactionSchema);
 
-module.exports = { Admin, Services, Transaction };
+module.exports = { Admin, Services, Transaction, connect};

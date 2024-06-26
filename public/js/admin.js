@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 function showSection(sectionId) {
     // Hide all content sections
     const sections = document.querySelectorAll('.content');
@@ -10,7 +8,7 @@ function showSection(sectionId) {
     activeSection.classList.add('active');
 }
 
-showSection('profile');
+showSection('transactions');
 
 function saveChanges() {
     alert("Changes saved successfully!");
@@ -75,3 +73,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.showSection = showSection;
 });
+
+function confirmLogout(event) {
+    event.preventDefault(); // Prevent form submission initially
+
+    if (confirm("Are you sure you want to log out?")) {
+        document.getElementById("logoutForm").submit(); // Submit the form if confirmed
+    } else {
+        // Do nothing or handle cancel action
+        console.log("Logout cancelled.");
+    }
+}

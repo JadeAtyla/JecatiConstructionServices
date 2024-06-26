@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction</title>
+    <link rel="stylesheet" href="/unipop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form action="/admin/add-edit-transaction/<%= transaction ? transaction._id : '' %>" method="post" class="form-group">
+            <label for="contactPerson" class="content-label">Contact Person:</label>
+            <input type="text" name="contactPerson" id="contactPerson" value="<%= transaction ? transaction.contactPerson : '' %>">
+            <label for="contactNumber" class="content-label">Contact Number:</label>
+            <input type="text" name="contactNumber" id="contactNumber" value="<%= transaction ? transaction.contactNumber : '' %>">
+            <label for="email" class="content-label">Email:</label>
+            <input type="email" name="email" id="email" value="<%= transaction ? transaction.email : '' %>">
+            <label for="services" class="content-label">Services:</label>
+            <% transaction.services.forEach((service, index) => { %>
+                <div>
+                    <select name="services[<%= index %>][type]" id="type">
+                        <option value="construction services" <%= service.type === 'construction services' ? 'selected' : '' %>>Construction Services</option>
+                        <option value="heavy equipment rental" <%= service.type === 'heavy equipment rental' ? 'selected' : '' %>>Heavy Equipment Rental</option>
+                    </select>
+                    <select name="services[<%= index %>][subcategory]" id="subcategory">
+                        <% if (service.type === 'construction services') { %>
+                            <option value="labor" <%= service.subcategory === 'labor' ? 'selected' : '' %>>Labor</option>
+                            <option value="diesel" <%= service.subcategory === 'diesel' ? 'selected' : '' %>>Diesel</option>
+                            <option value="dumptruck" <%= service.subcategory === 'dumptruck' ? 'selected' : '' %>>Dumptruck</option>
+                        <% } else if (service.type === 'heavy equipment rental') { %>
+                            <option value="komatsu pc 20" <%= service.subcategory === 'komatsu pc 20' ? 'selected' : '' %>>Komatsu PC 20</option>
+                            <option value="komatsu pc 30" <%= service.subcategory === 'komatsu pc 30' ? 'selected' : '' %>>Komatsu PC 30</option>
+                            <option value="komatsu pc 150" <%= service.subcategory === 'komatsu pc 150' ? 'selected' : '' %>>Komatsu PC 150</option>
+                        <% } %>
+                    </select>
+                </div>
+            <% }); %>
+            <label for="startingDate" class="content-label">Starting Date:</label>
+            <input type="date" name="startingDate" id="startingDate" value="<%= transaction ? transaction.startingDate.toLocaleDateString('en-CA') : '' %>">
+            <label for="dueDate" class="content-label">Due Date:</label>
+            <input type="date" name="dueDate" id="dueDate" value="<%= transaction ? transaction.dueDate.toLocaleDateString('en-CA') : '' %>">
+            <label for="location" class="content-label">Location:</label>
+            <input type="text" name="location" id="location" value="<%= transaction ? transaction.location : '' %>">
+            <label for="status" class="content-label">Status:</label>
+            <select name="status" id="status">
+                <option value="paid" <%= transaction && transaction.status === 'paid' ? 'selected' : '' %>>Paid</option>
+                <option value="unpaid" <%= transaction && transaction.status === 'unpaid' ? 'selected' : '' %>>Unpaid</option>
+                <option value="on-going" <%= transaction && transaction.status === 'on-going' ? 'selected' : '' %>>On-going</option>
+                <option value="overdue" <%= transaction && transaction.status === 'overdue' ? 'selected' : '' %>>Overdue</option>
+            </select>
+            <button type="submit" id="save"><%= transaction ? 'Update Transaction' : 'Add Transaction' %></button>
+           <button id="cancel">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>
