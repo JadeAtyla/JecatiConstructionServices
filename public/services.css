@@ -39,7 +39,14 @@ header h2 {
     padding: 10px 15px;
     font-weight: bold;
 }
-
+.jecati {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.jecati:hover {
+    cursor: pointer;
+}
 nav ul {
     display: flex;
     list-style: none;
@@ -94,6 +101,116 @@ hr{
     margin-top: 50px;
     width: 90%;
 }
+#services {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+#services .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#services .container h2 {
+    color: orange;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#services .container .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 80%;
+    justify-items: center;
+    margin-bottom: 50px;
+}
+
+#services .container .services-grid .service-card {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    gap: 20px;
+    color: #14213D;
+    box-shadow: 2px 2px 10px 0 grey;
+    width: 300px;
+}
+
+#services .container .services-grid .service-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+#services .container .services-grid .service-images {
+    margin-bottom: 30px;
+    width: 200px;
+    height: 200px;
+}
+
+#services .cta {
+    text-align: center;
+    margin-top: 40px;
+}
+#services .cta h3 {
+    color:black
+}
+#services .cta button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: #14213D;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+#services .cta button:hover {
+    background-color: #14213D;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.service-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    
+    margin-bottom: 10px;
+    margin-left: -905px;
+}
+.text-overlay {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+.jct-services {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    margin-left: -980px;
+}
+
 /* Footer */
 footer {
     width: 100%;
@@ -204,7 +321,13 @@ footer {
     margin: 20px 0 20px 0;
     border: 1px solid orange;
 }
-
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 10%;
+  z-index: 100;
+}
 /* Media Queries */
 @media screen and (max-width: 768px) {
     * {

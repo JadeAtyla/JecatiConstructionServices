@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jecati</title>
+    <title>Jecati Construction Services</title>
     <link rel="stylesheet" href="/pricing.css">
     <link rel="shortcut icon" href="/images/JecatiLogo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -14,54 +14,30 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="/images/JecatiLogo.png" alt="Jecati Construction Services Logo">
-            </div>
-            <h2>Jecati<span>ConstructionServices</span></h2>
+            <span class="jecati">
+                <div class="logo">
+                    <img src="/images/JecatiLogo.png" alt="Jecati Construction Services Logo">
+                </div>
+                <h2>Jecati<span>ConstructionServices</span></h2>
+            </span>
             <nav>
                 <ul>
                     <li><a href="/landing-page" class="nav-links">Home</a></li>
                     <li><a href="/about-us" class="nav-links">About Us</a></li>
                     <li><a href="/services" class="nav-links">Services</a></li>
                     <li><a href="/contact-us" class="nav-links">Contact Us</a></li>
-                    <li><a href="#" class="nav-links">Projects</a></li>
-                    <li><button class="inquire-now">INQUIRE NOW</button></li>
+                    <li><a href="/pricing" class="nav-links">Pricing</a></li>
+                    <li><button class="inquire-now" onclick="inquireNow(popup)">INQUIRE NOW</button></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
         <div class="body-container">
-            <h1>Pricing of Products</h1>
-            <h2>-Heavy Equipment</h2>
-            <div class="service-grid">
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 20</h3>
-                        <h4>PRICE: <br>
-                        P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 30</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU KOMA</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 150</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
+            <h1>Pricing of Services</h1>
+            <hr>
+            <h2>Heavy Equipment</h2>
+            <section id="service-grid">
                 <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
                     <div class="text-contents">
                         <h3 class="excavator-text">EXCAVATOR</h3>
@@ -89,28 +65,72 @@
                             P 1200/DAY</h4>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div> <img
-                        src="https://www.google.com/search?q=excavator&tbm=isch&ved=2ahUKEwj-4vX6t_z6AhVjM2wGHQ4jC8MQ2-cCegQIABAA&oq=excavator&gs_lcp=CgNpbWcQAzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQ&sclient=img&ei=c9-3Y6L1I4KjmAW5z5XABQ&bih=602&biw=1305&hl=en&safe=active&ssui=on#imgrc=83U4t5gX14Y-cM"
-                        alt="Excavator">
-                    <h3 class="excavator-text">EXCAVATOR</h3>
-                    <h3>LABOR</h3>
-                    <h4>PRICE:</h4>
-                    <h4>PRICE: <br>
-                        P 1200/DAY</h4>
+                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">EXCAVATOR</h3>
+                        <h3 class="excavator-name">KOMATSU</h3>
+                        <h3 class="excavator-name">EXCAVATOR PC 20</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
                 </div>
-                <div> <img
-                        src="https://www.google.com/search?q=excavator&tbm=isch&ved=2ahUKEwj-4vX6t_z6AhVjM2wGHQ4jC8MQ2-cCegQIABAA&oq=excavator&gs_lcp=CgNpbWcQAzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQQzIECAAQ&sclient=img&ei=c9-3Y6L1I4KjmAW5z5XABQ&bih=602&biw=1305&hl=en&safe=active&ssui=on#imgrc=83U4t5gX14Y-cM"
-                        alt="Excavator">
-                    <h3 class="excavator-text">EXCAVATOR</h3>
-                    <h3>DIESEL</h3>
-                    <h4>PRICE: <br>
-                        P 1200/DAY</h4>
+                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">EXCAVATOR</h3>
+                        <h3 class="excavator-name">KOMATSU</h3>
+                        <h3 class="excavator-name">EXCAVATOR PC 30</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
                 </div>
-            </div>
+                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">EXCAVATOR</h3>
+                        <h3 class="excavator-name">KOMATSU KOMA</h3>
+                        <h3 class="excavator-name">EXCAVATOR PC 150</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
+                </div>
+                <hr>
+            </section>
+            <h2>Construction</h2>
+            <section id="construction-grid">
+                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">LABOR</h3>
+                        <h3 class="excavator-name">LABOR</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
+                </div>
+                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">DIESEL</h3>
+                        <h3 class="excavator-name">DIESEL</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
+                </div>
+                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">DUMPTRUCK</h3>
+                        <h3 class="excavator-name">DUMPTRUCK 1</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
+                </div>
+                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
+                    <div class="text-contents">
+                        <h3 class="excavator-text">DUMPTRUCK</h3>
+                        <h3 class="excavator-name">DUMPTRUCK 2</h3>
+                        <h4>PRICE: <br>
+                            P 1200/DAY</h4>
+                    </div>
+                </div>
+            </section>
         </div>
-        </div>
+        <a href="/landing-page">-> Go back to Inquire Page</a>
         <hr>
     </main>
     <footer>
@@ -185,6 +205,13 @@
             </div>
         </section>
     </footer>
+    <div class="popup">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
+    </div>
 </body>
-
+<script type="text/javascript" src="/js/script.js"></script>
 </html>

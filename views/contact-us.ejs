@@ -11,18 +11,20 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="/images/JecatiLogo.png" alt="Jecati Construction Services Logo">
-            </div>
-            <h2>Jecati<span>ConstructionServices</span></h2>
+            <span class="jecati">
+                <div class="logo">
+                    <img src="/images/JecatiLogo.png" alt="Jecati Construction Services Logo">
+                </div>
+                <h2>Jecati<span>ConstructionServices</span></h2>
+            </span>
             <nav>
                 <ul>
                     <li><a href="/landing-page" class="nav-links">Home</a></li>
                     <li><a href="/about-us" class="nav-links">About Us</a></li>
                     <li><a href="/services" class="nav-links">Services</a></li>
                     <li><a href="/contact-us" class="nav-links">Contact Us</a></li>
-                    <li><a href="#" class="nav-links">Projects</a></li>
-                    <li><button class="inquire-now">INQUIRE NOW</button></li>
+                    <li><a href="/pricing" class="nav-links">Pricing</a></li>
+                    <li><button class="inquire-now" onclick="inquireNow(popup)">INQUIRE NOW</button></li>
                 </ul>
             </nav>
         </div>
@@ -105,6 +107,7 @@
                         </div>
                     </div>
                 </div>
+                <img src="excavator-contact.png" alt="Excavator Contact" class="ex-contact">
             </div>
         </div>
     </section>
@@ -181,5 +184,16 @@
             </div>
         </section>
     </footer>
+    <div class="popup">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <input type="text" name="">
+      <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
+    </div>
+
 </body>
+<script type="text/javascript" src="/js/script.js">
+      
+</script>
 </html>

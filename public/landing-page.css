@@ -41,7 +41,14 @@ header h2 {
     padding: 10px 15px;
     font-weight: bold;
 }
-
+.jecati {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.jecati:hover {
+    cursor: pointer;
+}
 nav ul {
     display: flex;
     list-style: none;
@@ -52,6 +59,7 @@ nav ul {
 nav ul li {
     margin-left: 20px;
     position: relative;
+
 }  
 
 .nav-links {
@@ -65,7 +73,8 @@ nav ul li {
 }
 
 .nav-links:hover {
-    background-color: orange; /* Keep button background white on hover */
+    background-color: orange;
+     /* Keep button background white on hover */
 }
 
 nav ul li button.inquire-now {
@@ -90,6 +99,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     padding: 90px 0;
+    gap: 50px;
 }
 #homepage{
     width: 100%;
@@ -309,6 +319,7 @@ main{
     padding: 50px;
     gap: 20px;
 }
+
 #services .container h2{
     color: orange;
     font-weight: bold;
@@ -612,7 +623,7 @@ main{
     color: orange;
 }
 #blog .container .header-label h2{
-    font-size: 32px;
+    font-size: 50px;
     color: #14213D;
 }
 /* Footer */
@@ -653,8 +664,20 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-.copyright p, .copyright a{
+#copyright{
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#copyright p, #copyright a{
     font-size: 15px;
+}
+#copyright p{
+    margin-bottom: 5px;
 }
 a{
     color: white;
@@ -694,7 +717,7 @@ footer .copyright {
 }
 
 .popup {
-  visibility: hidden;
+  display: none;
   position: fixed;
   top: 50%;
   right: 10%;

@@ -48,6 +48,14 @@ header h2 {
     font-weight: bold;
 }
 
+.jecati {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.jecati:hover {
+    cursor: pointer;
+}
 nav ul {
     display: flex;
     list-style: none;
@@ -291,6 +299,13 @@ hr {
     width: 100%;
     height: auto;
     max-width: 400px;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: 10%;
+  z-index: 100;
 }
 
 /* Responsive Styles */
