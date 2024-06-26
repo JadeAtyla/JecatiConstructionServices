@@ -183,6 +183,29 @@ app.get("/verify", async (req, res) => {
     }
 });
 
+app.post("/add-service", async (req, res) => {
+    const {category, unit, price} = req.body;
+    const service = {
+        category: category,
+        unit: unit,
+        price: price,
+        availability: 'available',
+        addedDate: new Date()
+    };
+    try {
+        if(!category||!unit||!price){
+          return res.status(400).json({ error: "All fields are required." });
+        }else{
+            await Services.insertMany(service);
+            console.log('Service Added Succesfully')
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    res.redirect('admin');
+});
+
 const port = process.env.port || 5600;
 app.listen(port, ()=>{
     console.log("Server Running on port: ", port);

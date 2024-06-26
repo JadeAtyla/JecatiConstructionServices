@@ -1,56 +1,43 @@
-body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
+body{
+    padding: 150px;
+    font-family: 'Inter', sans-serif;
 }
-
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-}
-
 .form-group {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.content-label {
+.form-group label {
+    display: block;
     margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: bold;
+    color: #14213D;
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
-input[type="text"] {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.form-group input, #category {
     width: 100%;
-}
-
-button {
     padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px; 
+}
+.form-group button {
     margin-top: 10px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: display 2s ease-in-out;
 }
-
-button[type="submit"] {
+#save{
     background-color: #4CAF50;
-    color: white;
 }
-
-button[type="cancel"] {
-    background-color: #f44336;
-    color: white;
+#cancel{
+    background-color: tomato;
 }
-
-button:hover {
-    opacity: 0.8;
+.form-group button:active {
+    transform: scale(0.9);
 }
