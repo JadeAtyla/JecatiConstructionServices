@@ -186,10 +186,13 @@ hr {
     flex: 1;
     min-width: 300px; /* Adjust as needed */
     margin: 10px;
+    
 }
-
 .form-box,
 .info-box {
+    border-style: solid;
+    border-color:orange;
+    border-width: 2px;
     background-color: #0A1222;
     padding: 20px;
     border-radius: 8px;
@@ -199,9 +202,7 @@ hr {
 
 /* Form Styles */
 .form {
-
     padding: 20px;
-
 }
 
 .form h3, .form h2 {
@@ -210,12 +211,13 @@ hr {
 }
 
 .form h3 {
-    color: #333;
-    font-size: 24px;
+    color: orange;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .form h2 {
-    color: #555;
+    color: #ffffff;
     font-size: 18px;
 }
 
@@ -275,12 +277,14 @@ hr {
 }
 
 .info-container h3 {
-    color: #333;
-    font-size: 24px;
+    color:orange;
+    font-size: 28px;
+    font-weight: bold;
 }
 
+
 .info-container h2 {
-    color: #555;
+    color: #fffefe;
     font-size: 18px;
 }
 
@@ -296,13 +300,13 @@ hr {
 
 .info-item h4 {
     margin: 0 0 5px;
-    font-size: 18px;
-    color: #333;
+    font-size: 21px;
+    color: orange;
 }
 
 .info-item p {
     margin: 0;
-    color: #555;
+    color: #ffffff;
 }
 
 .ex-contact {
