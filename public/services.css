@@ -211,6 +211,7 @@ body {
     margin-left: -980px;
 }
 
+
 /* Footer */
 footer {
     width: 100%;
@@ -218,6 +219,7 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: auto;
 }
 
 .footer-container {

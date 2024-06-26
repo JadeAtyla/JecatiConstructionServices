@@ -17,6 +17,7 @@ body {
     min-height: 100vh;
 }
 
+/* Header Styles */
 header .container {
     width: 100%;
     background-color: #14213D;
@@ -113,57 +114,83 @@ hr {
     width: 90%;
 }
 
+/* Hero Section */
 .hero {
     position: relative;
+    width: 100%;
     height: 500px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.container {
+.hero-container {
     position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .text-overlay {
     position: absolute;
-    top: 28%;
-    left: 50%;
+    top: 36%;
+    left: 17%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent background */
+    padding: 40px;
+    border-radius: 8px;
 }
 
 .contact-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 40px;
-    color: white;
-    margin-bottom: 10px; 
-    margin-left: -905px;
+    font-size: 36px;
+    margin-bottom: 10px;
+
 }
 
 .jct-contact {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
+
     font-size: 20px;
-    color: white;
-    margin-left: -980px;
+
 }
 
-.ex-contact {
-    display: block;
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
-    max-width: 400px; /* Adjust as needed */
-    margin: 20px auto; /* Center the image horizontally */
-    height: auto;
+    padding: 20px;
+}
+
+.booking-container,
+.info-container {
+    flex: 1;
+    min-width: 300px; /* Adjust as needed */
+    margin: 10px;
+}
+
+.form-box,
+.info-box {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
 /* Form Styles */
 .form {
-    flex: 1 1 45%;
+
     padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .form h3, .form h2 {
@@ -227,22 +254,21 @@ hr {
 }
 
 /* Information Styles */
-.info {
-    flex: 1 1 45%;
+.info-container {
     padding: 20px;
 }
 
-.info h3, .info h2 {
+.info-container h3, .info-container h2 {
     margin: 0 0 10px;
     font-weight: normal;
 }
 
-.info h3 {
+.info-container h3 {
     color: #333;
     font-size: 24px;
 }
 
-.info h2 {
+.info-container h2 {
     color: #555;
     font-size: 18px;
 }
@@ -284,11 +310,11 @@ hr {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .container {
+    .contact-container {
         flex-direction: column;
     }
 
-    .form, .info {
+    .booking-container, .info-container {
         flex: 1 1 100%;
         margin-bottom: 20px;
     }
@@ -301,7 +327,7 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: auto; /* Ensure footer stays at the bottom */
+    margin-top: auto;
 }
 
 .footer-container {
@@ -310,8 +336,7 @@ footer {
     justify-content: space-between;
     padding: 30px 30px;
 }
-
-.logo-section {
+.logo-section{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -327,17 +352,14 @@ footer {
     color: white;
     background-color: #080E1C;
 }
-
-.copyright-section .container {
+.copyright-section .container{
     padding: 20px;
 }
-
-copyright-section .container a {
+.copyright-section .container a{
     text-decoration: none;
     color: white;
 }
-
-.phone-section {
+.phone-section{
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -380,36 +402,32 @@ copyright-section .container a {
 .about .container p,
 .services ul li,
 .work ul li,
-.phone ul li,
-.copyright-section .container p,
-copyright-section .container a {
+.phone ul li, 
+.copyright-section .container p, 
+.copyright-section .container a{
     color: white;
     margin-bottom: 5px;
     font-size: 15px;
 }
-
-.social-section ul {
+.social-section ul{
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
-
-.phone .container h2 {
+.phone .container h2{
     color: orange;
 }
 
-.footer-container .container {
+.footer-container .container{
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
-
-.footer-container .container p {
+.footer-container .container p{
     margin-top: 20px;
 }
-
-.footer-hr {
+.footer-hr{
     width: 30%;
     margin: 20px 0 20px 0;
     border: 1px solid orange;
@@ -426,12 +444,11 @@ copyright-section .container a {
     }
 
     .footer-content p,
-    .footer-content div ul li a {
-        font-size: 14px;
+    .footer-content div ul li a{
+    font-size: 14px;
     }
-
-    nav ul li button.inquire-now {
-        padding: 5px 10px;
+    nav ul li button.inquire-now{
+     padding: 5px 10px;
     }
 }
 
@@ -445,11 +462,10 @@ copyright-section .container a {
     }
 
     .footer-content p,
-    .footer-content div ul li a {
-        font-size: 11px;
+    .footer-content div ul li a{
+    font-size: 11px;
     }
-
-    nav ul li button.inquire-now {
+    nav ul li button.inquire-now{
         padding: 3px 7px;
-    }
+       }
 }
