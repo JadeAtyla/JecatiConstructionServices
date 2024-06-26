@@ -4,6 +4,12 @@ const bcrypt = require('bcrypt');
 const {Admin, Services, Transaction} = require('./config'); //collections
 const nodemailer = require('nodemailer');
 const {v4: uuidv4} = require('uuid');
+const multer = require('multer');
+const moment = require('moment-timezone');
+const fs = require('fs');
+
+//current time in manila/ph
+const dateNow = moment().tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
 
 // App
 const app = express();
@@ -35,21 +41,31 @@ app.get("/services", (req, res) => {
     res.render('services');
 });
 // To pricing page
-app.get("/pricing", (req, res) => {
-    res.render('pricing');
+app.get("/pricing", async (req, res) => {
+    try {
+        const services = await Services.find().exec();
+
+        res.render('pricing', {
+            services: services,
+        });
+    } catch (error) {
+        console.error("Error fetching Pricing Services:", error);
+        res.status(500).render('error', { error: "Error fetching Pricing Services" });
+    }
 });
 //To the adding services page
 app.get("/admin/services", (req, res) => {
-    res.render('add-services.ejs');
+    res.render('admin/add-services.ejs');
 });
 
-app.get("/admin", async (req, res) => {
+// fetching all data while rendering page
+app.get("/admin/admin", async (req, res) => {
     try {
         const admin = await Admin.find().exec();
         const transaction = await Transaction.find().exec();
         const services = await Services.find().exec();
 
-        res.render('admin', {
+        res.render('admin/admin', {
             transaction: transaction,
             admin: admin,
             services: services,
@@ -183,27 +199,59 @@ app.get("/verify", async (req, res) => {
     }
 });
 
-app.post("/add-service", async (req, res) => {
-    const {category, unit, price} = req.body;
+const uploadDir = path.join(__dirname, '../public/images/uploads');
+
+// Ensure the uploads directory exists
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
+// Multer disk storage configuration
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, uploadDir);
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+
+// Multer upload middleware setup
+const upload = multer({ storage: storage }).single('image');
+
+// Route to handle file upload and form data
+app.post("/add-service", upload, async (req, res) => {
+    const { category, unit, price } = req.body;
+    const dateNow = new Date(); // Assuming dateNow is defined elsewhere
+
+    // Check if file upload was successful
+    if (!req.file) {
+        return res.status(400).json({ error: "Please upload a file." });
+    }
+
     const service = {
         category: category,
         unit: unit,
         price: price,
         availability: 'available',
-        addedDate: new Date()
+        addedDate: dateNow,
+        image: req.file.filename
     };
+
     try {
-        if(!category||!unit||!price){
-          return res.status(400).json({ error: "All fields are required." });
-        }else{
+        if (!category || !unit || !price) {
+            return res.status(400).json({ error: "All fields are required." });
+        } else {
+            // Assuming Services is a model or database connection to insert data
             await Services.insertMany(service);
-            console.log('Service Added Succesfully')
+            console.log('Service Added Successfully');
         }
     } catch (error) {
         console.log(error);
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 
-    res.redirect('admin');
+    res.redirect('admin/admin'); // Redirect after successful upload
 });
 
 const port = process.env.port || 5600;

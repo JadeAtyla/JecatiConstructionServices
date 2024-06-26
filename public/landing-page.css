@@ -11,6 +11,14 @@ body {
     width: 100%;
     position: relative;
     font-family: 'Inter', sans-serif;
+<<<<<<< HEAD
+=======
+    background-color: #ffffff;
+    padding-top: 80px; /* Adjust according to the header height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+>>>>>>> 9caebb57fbd8e7bb7616d0738d84e808b09029e4
 }
 
 /* Header */
@@ -536,7 +544,7 @@ span {
 main{
     display: flex;
     flex-wrap: wrap;
-    padding: 90px 0;
+    padding: 10px 0;
     gap: 50px;
 }
 #homepage{
