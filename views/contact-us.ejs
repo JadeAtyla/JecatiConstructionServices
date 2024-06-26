@@ -28,79 +28,88 @@
         </div>
     </header>
     <main>
-    <section class="hero">
-        <div class="container">
+        <section class="hero">
+            <div class="hero-container">
                 <img src="/images/excavator-contact.png" alt="Excavator">
-            <div class="text-overlay">
-                <h2 class="contact-title">Contact Us</h2>
-                <p class="jct-contact">JCT - Contact</p>
+                <div class="text-overlay">
+                    <h2 class="contact-title">Contact Us</h2>
+                    <p class="jct-contact">JCT - Contact</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
 
     <section class="contact">
-        <div class="container">
-            <div class="form">
-                <h3>Booking Form</h3>
-                <h2>Send Us Message</h2>
-                <form action="/send-email" method="post">
-                    <div class="form-group">
-                        <label for="name">Name*</label>
-                        <input type="text" id="name" name="name" required>
+        <div class="contact-container">
+            <div class="booking-container">
+                <div class="form-box">
+                    <div class="form">
+                        <h3>Booking Form</h3>
+                        <h2>Send Us Message</h2>
+                        <form action="/send-email" method="post">
+                            <div class="form-group">
+                                <label for="name">Name*</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone*</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address*</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Enter your question or message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="button">Send Message</button>
+                        </form>
+                        <p>Rate us on Facebook!</p>
+                        <div class="rating">
+                            <i class="fa fa-facebook-square"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone*</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address*</label>
-                        <input type="text" id="address" name="address" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Enter your question or message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="button">Send Message</button>
-                </form>
-                <p>Rate us on Facebook!</p>
-                <div class="rating">
-                    <i class="fa fa-facebook-square"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
                 </div>
-            </div>
-            <div class="info">
-                <h3>Information</h3>
-                <h2>Get In Touch</h2>
-                <div class="info-item">
-                    <i class="fa fa-map-marker"></i>
-                    <h4>Our address</h4>
-                    <p>Lot 25 Block 12 Green Valley Subdivision,
-                        San Nicholas III 4102 Bacoor, Cavite</p>
+            </div> 
+            <div class="info-container">   
+                <div class="info-box">
+                    <div class="info">
+                        <h3>Information</h3>
+                        <h2>Get In Touch</h2>
+                        <div class="info-item">
+                            <i class="fa fa-map-marker"></i>
+                            <h4>Our address</h4>
+                            <p>Lot 25 Block 12 Green Valley Subdivision,
+                                San Nicholas III 4102 Bacoor, Cavite</p>
+                            <img src="excavator-contact.png" alt="Excavator Contact" class="ex-contact">
+                        </div>
+                        <div class="info-item">
+                            <i class="fa fa-envelope"></i>
+                            <h4>Mail us for information</h4>
+                            <p>plukgeoffreylorenztiu@gmail.com</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa fa-phone"></i>
+                            <h4>Contact number</h4>
+                            <p>(+63) 928 180 8210<br>(+63) 918 906 5202</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fa fa-envelope"></i>
-                    <h4>Mail us for information</h4>
-                    <p>plukgeoffreylorenztiu@gmail.com</p>
-                </div>
-                <div class="info-item">
-                    <i class="fa fa-phone"></i>
-                    <h4>Contact number</h4>
-                    <p>(+63) 928 180 8210
-                        (+63) 918 906 5202</p>
-                </div>
-                <img src="excavator-contact.png" alt="Excavator Contact" class="ex-contact">
             </div>
         </div>
     </section>
-    <hr>
+    
+        <hr>
     </main>
 
     <footer>
