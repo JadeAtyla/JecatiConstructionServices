@@ -49,6 +49,10 @@ const adminSchema = new mongoose.Schema({
 });
 
 const servicesSchema = new mongoose.Schema({
+    image:{
+        type: String,
+        required: true
+    },
     category: {
         type: String,
         enum: ['construction services', 'heavy equipment rental'],

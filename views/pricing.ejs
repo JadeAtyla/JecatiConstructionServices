@@ -38,97 +38,57 @@
             <hr>
             <h2>Heavy Equipment</h2>
             <section id="service-grid">
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 20</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 30</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU KOMA</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 150</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 20</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 30</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="service-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">EXCAVATOR</h3>
-                        <h3 class="excavator-name">KOMATSU KOMA</h3>
-                        <h3 class="excavator-name">EXCAVATOR PC 150</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <hr>
+                <% if (services && services.some(row=> row.category === "heavy equipment rental")) { %>
+                    <% services.forEach((row)=> { %>
+                        <% if (row.category==="heavy equipment rental" ) { %>
+                            <div class="construction-card">
+                                <img src="/images/uploads/<%= row.image %>" alt="Excavator">
+                                <div class="text-contents">
+                                    <h3 class="excavator-text">EXCAVATOR</h3>
+                                    <h3 class="excavator-name">
+                                        <%= row.unit.toUpperCase() %>
+                                    </h3>
+                                    <h4>PRICE: <br>
+                                        P <%= row.price %>/DAY</h4>
+                                    <h4>
+                                        <%= row.availability.toUpperCase() %>
+                                    </h4>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <h1>No Data</h1>
+                                        <% } %>
+                                            <hr>
             </section>
+
             <h2>Construction</h2>
             <section id="construction-grid">
-                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">LABOR</h3>
-                        <h3 class="excavator-name">LABOR</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">DIESEL</h3>
-                        <h3 class="excavator-name">DIESEL</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">DUMPTRUCK</h3>
-                        <h3 class="excavator-name">DUMPTRUCK 1</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
-                <div class="construction-card"> <img src="/images/pc20.png" alt="Excavator">
-                    <div class="text-contents">
-                        <h3 class="excavator-text">DUMPTRUCK</h3>
-                        <h3 class="excavator-name">DUMPTRUCK 2</h3>
-                        <h4>PRICE: <br>
-                            P 1200/DAY</h4>
-                    </div>
-                </div>
+                <% if (services && services.some(row=> row.category === "construction services")) { %>
+                    <% services.forEach((row)=> { %>
+                        <% if (row.category==="construction services" ) { %>
+                            <div class="construction-card">
+                                <img src="/images/uploads/<%= row.image %>" alt="Excavator">
+                                <div class="text-contents">
+                                    <h3 class="excavator-text">JECATI</h3>
+                                    <h3 class="excavator-name">
+                                        <%= row.unit.toUpperCase() %>
+                                    </h3>
+                                    <h4>PRICE: <br>
+                                        P <%= row.price %>/DAY</h4>
+                                    <h4>
+                                        <%= row.availability.toUpperCase() %>
+                                    </h4>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% }) %>
+                                    <% } else { %>
+                                        <h1>No Data</h1>
+                                        <% } %>
             </section>
+
         </div>
         <a href="/landing-page">-> Go back to Inquire Page</a>
         <hr>
@@ -206,12 +166,13 @@
         </section>
     </footer>
     <div class="popup">
-      <input type="text" name="">
-      <input type="text" name="">
-      <input type="text" name="">
-      <input type="text" name="">
-      <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
+        <input type="text" name="">
+        <input type="text" name="">
+        <input type="text" name="">
+        <input type="text" name="">
+        <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
     </div>
 </body>
 <script type="text/javascript" src="/js/script.js"></script>
+
 </html>

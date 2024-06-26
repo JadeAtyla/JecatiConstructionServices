@@ -10,12 +10,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="/add-service" method="post" class="form-group">
+        <form action="/add-service" method="post" enctype="multipart/form-data" class="form-group">
             <label for="rentalService" class="content-label">Rental Service:</label>
             <select name="category" id="category">
                 <option value="construction services">Construction Services</option>
                 <option value="heavy equipment rental">Heavy Equipment Rental</option>
             </select>
+            <label for="image" class="content-label">Image:</label>
+            <input type="file" name="image" id="image">
             <label for="unit" class="content-label">Unit:</label>
             <input type="text" name="unit" id="unit">
             <label for="price" class="content-label">Price:</label>
