@@ -1,11 +1,10 @@
-
-/* General Styles */
 * {
     font-size: 20px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    transition: transform 0.5s ease;
+    transition: width 0.5s ease;
 }
 
 body {
@@ -19,22 +18,17 @@ body {
     min-height: 100vh;
 }
 
-/* Header Styles */
+/* Header */
 header .container {
-    width: calc(100% - 3px); /* Adjust the width to allow space for rounded corners */
+    width: 100%;
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 20px 20px ;
     position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 1.25px; /* Centering the container */
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
-    box-shadow: 0 5px #999;
+    z-index: 99;
 }
 
 header .logo img {
@@ -51,18 +45,17 @@ header h2 {
     height: 100%;
     padding: 10px 15px;
     font-weight: bold;
-}
+    font-size: 24px;
 
+}
 .jecati {
     display: flex; 
     justify-content: center; 
     align-items: center;
 }
-
 .jecati:hover {
     cursor: pointer;
 }
-
 nav ul {
     display: flex;
     list-style: none;
@@ -73,7 +66,8 @@ nav ul {
 nav ul li {
     margin-left: 20px;
     position: relative;
-}
+
+}  
 
 .nav-links {
     text-decoration: none;
@@ -86,35 +80,463 @@ nav ul li {
 }
 
 .nav-links:hover {
-    background-color: orange; /* Keep button background white on hover */
+    padding: 12px 22px;
+    background-color: #fca311;
+     /* Keep button background white on hover */
 }
 
 nav ul li button.inquire-now {
-    background-color: orange;
-    color: white;
+    background-color: #fca311;
+    color: #14213D;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 50px; /* Make the button round */
+    border-radius: 10px;
     font-weight: bold;
-    box-shadow: 0 5px #999; /* Add shadow for 3D effect */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
 nav ul li button.inquire-now:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px #666; /* Adjust shadow on hover for deeper effect */
-}
-
-nav ul li button.inquire-now:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px #666; /* Adjust shadow on active for pressed effect */
 }
 
 span {
-    color: orange;
+    color: #fca311;
 }
 
+.popup{
+    display: none;
+    width: 850px;
+    height: 540px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    color: white;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba(253, 253, 253, 0.5); /* White shadow with increased thickness */
+   
+
+}
+#closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    background-color: #14213d;
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 17px;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+#bottomRectangle {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 10px;
+    width: 850px;
+    height: 60px; /* Adjust the height as needed */
+    background-color: #14213d; /* Adjust the color as needed */
+}
+#windowImage {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    width: 310px; /* Adjust the width as needed */
+    height: 475px; /* Maintain aspect ratio */
+    display: block; /* Center image horizontally */
+    margin: 20px auto; /* Adjust margin as needed */
+    border-radius: 20px;
+}
+#bottomText{
+    position: absolute;
+    top: 498px;
+    left: 440px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #dfdfdf;
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+}
+#policy{
+    position: absolute;
+    top: 510px;
+    left: 570px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #dfdfdf;
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+}
+#inquire{
+    position: absolute;
+    top: 70px;
+    left: 60px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #ffffff;
+    font-size: 27px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+#connect{
+    position: absolute;
+    top: 130px;
+    left: 60px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+
+#interested{
+    position: absolute;
+    top: 49px;
+    left: 360px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #fca311;
+    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+
+#fill{
+    position: absolute;
+    top: 72px;
+    left: 360px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+#fullNameInput {
+
+    position:absolute;
+    top: 97px;
+    left: 360px;
+    width: 225px;
+    height: 8px;
+    display: block;
+    border: 1.5px solid rgb(197, 191, 191);
+    margin: 10px auto; /* Center the input field */
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 25px; /* Make the input field rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+}
+#contact {
+
+    position:absolute;
+    top: 97px;
+    left: 600px;
+    width: 228px;
+    height: 8px;
+    display: block;
+    border: 1.5px solid rgb(197, 191, 191);
+    margin: 10px auto; /* Center the input field */
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 25px; /* Make the input field rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+
+
+}
+#gmail {
+
+    position:absolute;
+    top: 145px;
+    left: 360px;
+    width: 466px;
+    height: 8px;
+    display: block;
+    border: 1.5px solid rgb(197, 191, 191);
+    margin: 10px auto; /* Center the input field */
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 25px; /* Make the input field rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+}
+#service{
+    position: absolute;
+    top: 200px;
+    left: 360px;
+    margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+#equipment{
+    position: absolute;
+    top: 220px;
+    left: 360px;
+    margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+#construction{
+    position: absolute;
+    top: 220px;
+    left: 540px;
+    margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+#simpleDropdown {
+    position: absolute;
+    top: 230px;
+    left: 360px;
+    width: 150px;
+    height: 40px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    
+
+}
+#simpleDropdown option {
+    font-size: 14px; /* Adjust the font size of each option */
+    padding: 8px 12px; /* Adjust padding inside each option */
+}
+
+#simpleDropdowntwo {
+    position: absolute;
+    top: 230px;
+    left: 540px;
+    width: 175px;
+    height: 40px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 10px;
+    font-size: 14px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(116, 43, 43, 0.3); /* Darker gray shadow */
+}
+#simpleDropdowntwo option {
+    font-size: 14px; /* Adjust the font size of each option */
+    padding: 8px 12px; /* Adjust padding inside each option */
+}
+
+
+#date{
+    position: absolute;
+    top: 290px;
+    left: 360px;
+    margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+#duration{
+    position: absolute;
+    top: 290px;
+    left: 600px;
+    margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213d;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+
+}
+
+#dateInput{
+    position: absolute;
+    top: 308px;
+    left: 360px;
+    width: 110px;
+    height: 35px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 10px;
+    font-size: 12px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    border-radius: 25px;
+}
+
+#timeInput{
+    position: absolute;
+    top: 308px;
+    left: 480px;
+    width: 110px;
+    height: 35px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 10px;
+    font-size: 12px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    border-radius: 25px;
+}
+#dateInput2{
+    position: absolute;
+    top: 308px;
+    left: 600px;
+    width: 110px;
+    height: 35px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 10px;
+    font-size: 12px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    border-radius: 25px;
+}
+
+#timeInput2{
+    position: absolute;
+    top: 308px;
+    left: 718px;
+    width: 110px;
+    height: 35px;
+    display: block;
+    margin: 10px auto; /* Center the dropdown */
+    padding: 10px;
+    font-size: 12px;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    border-radius: 25px;
+}
+
+#loc {
+
+    position:absolute;
+    top: 358px;
+    left: 360px;
+    width: 228px;
+    height: 8px;
+    display: block;
+    border: 1.5px solid rgb(197, 191, 191);
+    margin: 10px auto; /* Center the input field */
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 25px; /* Make the input field rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+
+
+}
+
+#droploc {
+
+    position:absolute;
+    top: 358px;
+    left: 600px;
+    width: 228px;
+    height: 8px;
+    display: block;
+    border: 1.5px solid rgb(197, 191, 191);
+    margin: 10px auto; /* Center the input field */
+    padding: 15px 20px;
+    font-size: 13px;
+    border-radius: 25px; /* Make the input field rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+
+
+}
+#submitBtn {
+    position: absolute;
+    top: 420px;
+    left: 600px;
+    width: 100px;
+    height: 30px;
+    background-color: #14213d; /* Button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+}
+
+#submitBtn:hover {
+    background-color: #fca311; /* Button color on hover */
+}
+
+#cancelBtn {
+    position: absolute;
+    top: 420px;
+    left: 493px;
+    width: 100px;
+    height: 30px;
+    background-color: #14213d; /* Button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Gray shadow */
+}
+
+#cancelBtn:hover {
+    background-color: #fca311; /* Button color on hover */
+}
+/*
+.dropdown {
+    position: relative;
+    display: inline-block;
+    position: absolute;
+    top: 232px;
+    left: 360px;
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    border: 1.5px solid rgb(197, 191, 191);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  
+    color: #000;
+    z-index: 1;
+}
+#dropdownButton{
+    margin: 8px  auto; 
+    padding: 10px 15px;
+    font-size: 13px;
+    background-color: #ffffff;
+    border: 1.5px solid rgb(197, 191, 191);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    color: #6d6b6b;
+}
+.dropdown-content label {
+    display: block;
+    font-size: 12px;
+    color: #14213D;
+    padding: 8px;
+    cursor: pointer;
+    
+}
+
+.dropdown-content label:hover {
+    background-color: #f1f1f1;
+}   
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+*/
 /* Body/Main */
 main{
     display: flex;
@@ -219,7 +641,7 @@ main{
 }
 
 #floating-specialization .sub-container{
-    display: flex;
+    display: flex;  
     flex-wrap: wrap;
     flex-direction: column;
     flex-grow: 1;
@@ -252,6 +674,7 @@ main{
 }
 #quality, #dedicated{
     background-color: #14213D;
+    border: 1px solid #ffffff;
 }
 #about{
     position: relative;
@@ -695,6 +1118,7 @@ footer .container {
     flex-direction: column;
     align-items: center;
 }
+
 #copyright p, #copyright a{
     font-size: 15px;
 }
@@ -784,3 +1208,4 @@ footer .copyright {
         padding: 3px px;
        }
 }
+
