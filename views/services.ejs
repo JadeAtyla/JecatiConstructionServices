@@ -154,11 +154,59 @@
         </section>
     </footer>
     <div class="popup">
-      <input type="text" name="">
-      <input type="text" name="">
-      <input type="text" name="">
-      <input type="text" name="">
-      <button class="submit-inquiry" onclick="submitInquiry(popup)">Submit Inquiry</button>
+        <span id="closeBtn">&times;</span>
+        <div id="bottomRectangle"></div>
+        <img id="windowImage" src="/images/worker.jpg" alt="Window Image">
+        <div id="bottomText">Copyright © 2024 Jecati Construction Services powered by TAKDA</div>
+    
+        <div id="policy">Privacy Policy</div>
+        <div id="inquire">Inquire<br> Now</div>
+    
+        <div id="connect">Connect with us today!</div>
+        
+        <div id="interested">Interested in our service?</div>
+        <div id="fill"> Fill in the blanks below and we'll get back to you promptly!</div>
+        <input id="fullNameInput" type="text" placeholder="Full Name" required>
+        <input id="contact" type="text" placeholder="Contact" required>
+        <input id="gmail" type="email" placeholder="Gmail Account: ex. jhonspeigths@gmail.com" required>
+    
+        <div id="service">Service</div>
+        <div id="equipment">Heavy Equipment Rental:</div>
+        <div id="construction">Construction:</div>
+    
+        <!-- Simple Dropdown -->
+        <select id="simpleDropdown" required>
+            <option value="" disabled selected>PC 20- 1200/ hr</option>
+            <option value="option1">PC 20- 1200/ hr</option>
+            <option value="option2">PC 30- 1200/ hr</option>
+            <option value="option3">PC 150- 1800/ hr</option>
+            <option value="option4">PC 170- 2000/ hr</option>
+            <option value="option5">PC200- 2300/hr</option>
+            <option value="option6">2 Mini dump truck - 2000/trip</option>
+        </select>
+    
+        <select id="simpleDropdowntwo" required>
+            <option value="" disabled selected>Labor - 600 to 800</option>
+            <option value="option1">Labor - 600 to 800/day personnel</option>
+            <option value="option2">Equipment - 30hr down payment</option>
+            <option value="option3">Diesel - 2000/day</option>
+        </select>
+        
+        <div id="date">Date and Time</div>
+        <div id="duration">Duration and Due Date</div>
+    
+        <!-- Date and Time Inputs -->
+        <input id="dateInput" type="date" required>
+        <input id="timeInput" type="time" required>
+        <!-- Date and Time Inputs -->
+        <input id="dateInput2" type="date" required>
+        <input id="timeInput2" type="time" required>
+    
+        <input id="loc" type="text" placeholder="Location" required>
+        <input id="droploc" type="text" placeholder="Drop Location" required>
+    
+        <button id="submitBtn">Submit</button>
+        <button id="cancelBtn">Cancel</button>
     </div>
 </body>
 <script type="text/javascript" src="/js/script.js"></script>
