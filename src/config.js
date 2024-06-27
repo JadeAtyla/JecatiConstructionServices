@@ -90,29 +90,17 @@ const transactionSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    services: [
-        {
-            type: {
-                type: String,
-                enum: ['construction services', 'heavy equipment rental'],
-                required: true
-            },
-            subcategory: {
-                type: String,
-                required: true,
-                validate: {
-                    validator: function(subcategory) {
-                        const subcategories = {
-                            'construction services': ['labor', 'diesel', 'dumptruck'],
-                            'heavy equipment rental': ['komatsu pc 20', 'komatsu pc 30', 'komatsu pc 150']
-                        };
-                        return subcategories[this.type].includes(subcategory);
-                    },
-                    message: props => `${props.value} is not a valid subcategory for ${props.path}`
-                }
-            }
+    services: [{
+        unit:{
+            type: String,
+            enum: [],
+            require: true
+        },
+        quantity:{
+            type: Number,
+            min: 1
         }
-    ],
+    }],
     startingDate: {
          type: Date, 
          default: Date.now,

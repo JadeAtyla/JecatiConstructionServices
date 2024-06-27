@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,51 +9,192 @@
     <link rel="stylesheet" href="/unipop.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-        <form action="/admin/add-edit-transaction/<%= transaction ? transaction._id : '' %>" method="post" class="form-group">
+        <form action="/admin/add-edit-transaction/<%= transaction ? transaction._id : '' %>" method="post"
+            class="form-group" id="form">
             <label for="contactPerson" class="content-label">Contact Person:</label>
-            <input type="text" name="contactPerson" id="contactPerson" value="<%= transaction ? transaction.contactPerson : '' %>">
+            <input type="text" name="contactPerson" id="contactPerson"
+                value="<%= transaction ? transaction.contactPerson : '' %>">
             <label for="contactNumber" class="content-label">Contact Number:</label>
-            <input type="text" name="contactNumber" id="contactNumber" value="<%= transaction ? transaction.contactNumber : '' %>">
+            <input type="text" name="contactNumber" id="contactNumber"
+                value="<%= transaction ? transaction.contactNumber : '' %>">
             <label for="email" class="content-label">Email:</label>
             <input type="email" name="email" id="email" value="<%= transaction ? transaction.email : '' %>">
-            <label for="services" class="content-label">Services:</label>
-            <% transaction.services.forEach((service, index) => { %>
-                <div>
-                    <select name="services[<%= index %>][type]" id="type">
-                        <option value="construction services" <%= service.type === 'construction services' ? 'selected' : '' %>>Construction Services</option>
-                        <option value="heavy equipment rental" <%= service.type === 'heavy equipment rental' ? 'selected' : '' %>>Heavy Equipment Rental</option>
-                    </select>
-                    <select name="services[<%= index %>][subcategory]" id="subcategory">
-                        <% if (service.type === 'construction services') { %>
-                            <option value="labor" <%= service.subcategory === 'labor' ? 'selected' : '' %>>Labor</option>
-                            <option value="diesel" <%= service.subcategory === 'diesel' ? 'selected' : '' %>>Diesel</option>
-                            <option value="dumptruck" <%= service.subcategory === 'dumptruck' ? 'selected' : '' %>>Dumptruck</option>
-                        <% } else if (service.type === 'heavy equipment rental') { %>
-                            <option value="komatsu pc 20" <%= service.subcategory === 'komatsu pc 20' ? 'selected' : '' %>>Komatsu PC 20</option>
-                            <option value="komatsu pc 30" <%= service.subcategory === 'komatsu pc 30' ? 'selected' : '' %>>Komatsu PC 30</option>
-                            <option value="komatsu pc 150" <%= service.subcategory === 'komatsu pc 150' ? 'selected' : '' %>>Komatsu PC 150</option>
-                        <% } %>
-                    </select>
-                </div>
-            <% }); %>
+            <div class="addService">
+                <label for="services" class="content-label">Services:</label>
+                <button type="button" id="addButton" onclick="togglePopUp()">Add Services</button>
+            </div>
+            <div id="selectServices">
+                
+            </div>
             <label for="startingDate" class="content-label">Starting Date:</label>
-            <input type="date" name="startingDate" id="startingDate" value="<%= transaction ? transaction.startingDate.toLocaleDateString('en-CA') : '' %>">
-            <label for="dueDate" class="content-label">Due Date:</label>
-            <input type="date" name="dueDate" id="dueDate" value="<%= transaction ? transaction.dueDate.toLocaleDateString('en-CA') : '' %>">
+            <input type="date" name="startingDate" id="startingDate"
+                value="<%= transaction ? transaction.startingDate.toLocaleDateString('en-CA') : '' %>"><label
+                for="dueDate" class="content-label">Due Date:</label>
+            <input type="date" name="dueDate" id="dueDate"
+                value="<%= transaction ? transaction.dueDate.toLocaleDateString('en-CA') : '' %>">
             <label for="location" class="content-label">Location:</label>
             <input type="text" name="location" id="location" value="<%= transaction ? transaction.location : '' %>">
             <label for="status" class="content-label">Status:</label>
             <select name="status" id="status">
-                <option value="paid" <%= transaction && transaction.status === 'paid' ? 'selected' : '' %>>Paid</option>
-                <option value="unpaid" <%= transaction && transaction.status === 'unpaid' ? 'selected' : '' %>>Unpaid</option>
-                <option value="on-going" <%= transaction && transaction.status === 'on-going' ? 'selected' : '' %>>On-going</option>
-                <option value="overdue" <%= transaction && transaction.status === 'overdue' ? 'selected' : '' %>>Overdue</option>
-            </select>
-            <button type="submit" id="save"><%= transaction ? 'Update Transaction' : 'Add Transaction' %></button>
-           <button id="cancel">Cancel</button>
+                <option value="paid" <%=transaction && transaction.status==='paid' ? 'selected' : '' %>>Paid</option>
+                <option value="unpaid" <%=transaction && transaction.status==='unpaid' ? 'selected' : '' %>>Unpaid
+                </option>
+                <option value="on-going" <%=transaction && transaction.status==='on-going' ? 'selected' : '' %>>On-going
+                </option>
+                <option value="overdue" <%=transaction && transaction.status==='overdue' ? 'selected' : '' %>>Overdue
+                </option>
+            </select><br>
+            <button type="submit" id="save">
+                <%= transaction ? 'Update Transaction' : 'Add Transaction' %>
+            </button>
+            <button type="button" id="cancel" onclick="window.location.href='/admin/admin'">Cancel</button>
         </form>
     </div>
+
+    <div id="popAdd">
+       <div id="popContainer">
+
+       </div>
+    <div class="buttonGroup">
+        <button id="submit" onclick="closePopUp()">Submit</button>
+        <button id="cancel" onclick="closePopUp()">Cancel</button>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    fetch("/admin/getData")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const { transaction, services } = data;
+            const transactionId = "<%= transaction ? transaction._id : '' %>"; // Ensure transaction ID is correctly populated by your server-side code
+            const divContainer = document.getElementById('selectServices');
+
+            // Find the specific transaction
+            const specificTransaction = transaction.find(trans => trans._id === transactionId);
+            if (!specificTransaction) {
+                throw new Error('Transaction not found');
+            }
+
+            // Display services for the specific transaction
+            specificTransaction.services.forEach(serv => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = serv.unit;
+                input.id = `transaction_${specificTransaction._id}_service_${serv._id}`;
+                input.setAttribute('readonly', true);
+                divContainer.appendChild(input);
+            });
+
+            const popup = document.getElementById('popContainer');
+            services.forEach(res => {
+                const input = document.createElement('input');
+                const label = document.createElement('label');
+                input.type = "checkbox";
+                input.id = res.unit;
+                input.name = res.unit;
+                input.value = res.unit;
+                specificTransaction.services.forEach((gen) => {
+                    if (!input.checked) {
+                        input.checked = res.unit.toLowerCase() === gen.unit.toLowerCase();
+                    }
+                });
+
+                label.class = "checkbox";
+                label.value = res.unit;
+                label.textContent = res.unit;
+                label.appendChild(input);
+                popup.appendChild(label);
+            });
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+
+    // Function to collect checked checkboxes
+    function getCheckedCheckboxes() {
+        const checkedCheckboxes = [];
+        const checkboxes = document.querySelectorAll('#popContainer input[type="checkbox"]:checked');
+        checkboxes.forEach(checkbox => {
+            checkedCheckboxes.push({
+                unit: checkbox.value,
+                quantity: 1 // Assuming quantity is 1, change as needed
+            });
+        });
+        return checkedCheckboxes;
+    }
+
+    // Function to post checked checkboxes
+    function postCheckedCheckboxes(transactionId, data) {
+        fetch(`/admin/add-edit-transaction/${transactionId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            console.log('Post response:', responseData);
+            // Redirect or update the UI as needed
+            window.location.href = '/admin/admin'; // Redirect to the admin page
+        })
+        .catch(error => {
+            console.error('Post error:', error);
+        });
+    }
+
+    //Transfer data to the post route
+    const checkButton = document.getElementById('save'); // Ensure you have a button with id="checkButton"
+    checkButton.addEventListener('click', () => {
+        const checkedServices = getCheckedCheckboxes();
+        const transactionId = "<%= transaction ? transaction._id : '' %>"; // Ensure transaction ID is correctly populated by your server-side code
+        const dataToPost = {
+            contactPerson: document.getElementById('contactPerson').value, // Ensure you have these input fields in your HTML
+            contactNumber: document.getElementById('contactNumber').value,
+            email: document.getElementById('email').value,
+            services: checkedServices,
+            startingDate: document.getElementById('startingDate').value,
+            dueDate: document.getElementById('dueDate').value,
+            location: document.getElementById('location').value,
+            status: document.getElementById('status').value
+        };
+        postCheckedCheckboxes(transactionId, dataToPost);
+    });
+});
+
+    // Function to toggle the visibility of the pop-up
+    function togglePopUp() {
+        const popAdd = document.getElementById('popAdd');
+        if (popAdd.style.display === 'none' || popAdd.style.display === '') {
+            // If pop-up is hidden or not displayed, show it
+            popAdd.style.display = 'block';
+        } else {
+            // If pop-up is visible, hide it
+            popAdd.style.display = 'none';
+        }
+    }
+
+    // Function to close the pop-up
+    function closePopUp() {
+        const popAdd = document.getElementById('popAdd');
+        popAdd.style.display = 'none'; // Hide the pop-up
+    }
+
+    </script>
 </body>
+
 </html>

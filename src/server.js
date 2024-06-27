@@ -56,6 +56,7 @@ app.get("/pricing", async (req, res) => {
         res.status(500).render('error', { error: "Error fetching Pricing Services" });
     }
 });
+
 //To the adding services page
 app.get("/admin/services", (req, res) => {
     res.render('admin/add-edit-service');
@@ -239,6 +240,7 @@ app.post("/admin/login", async (req, res) => {
                 } else {
                     // Set user in session
                     req.session.user = user;
+                    process.env.SESSION_SECRET = user.verificationToken;
                     res.redirect('/admin/admin');
                 }
             }
@@ -348,6 +350,7 @@ app.post("/admin/add-edit-service/:id?", upload, async (req, res) => {
 app.get("/admin/add-edit-transaction/:id?", async (req, res) => {
     try {
         let transaction = null;
+
         if (req.params.id) {
             // Fetch transaction details for editing
             transaction = await Transaction.findById(req.params.id);
@@ -381,7 +384,7 @@ app.post('/admin/login', async (req, res) => {
     }
 });
 
-// POST route to add or edit a transaction
+/// POST route to add or edit a transaction
 app.post("/admin/add-edit-transaction/:id", authenticateUser, async (req, res) => {
     try {
         const transactionId = req.params.id;
@@ -391,14 +394,17 @@ app.post("/admin/add-edit-transaction/:id", authenticateUser, async (req, res) =
             // Edit an existing transaction
             transaction = await Transaction.findById(transactionId).exec();
             if (!transaction) {
-                return res.status(404).render('error', { error: 'Transaction not found' });
+                return res.status(404).json({ error: 'Transaction not found' });
             }
 
             // Update the transaction with the new data
             transaction.contactPerson = req.body.contactPerson;
             transaction.contactNumber = req.body.contactNumber;
             transaction.email = req.body.email;
-            transaction.services = req.body.services;
+            transaction.services = req.body.services.map((service) => ({
+                unit: service.unit,
+                quantity: service.quantity || 1, // Default quantity to 1 if not provided
+            }));
             transaction.startingDate = req.body.startingDate;
             transaction.dueDate = req.body.dueDate;
             transaction.location = req.body.location;
@@ -407,24 +413,37 @@ app.post("/admin/add-edit-transaction/:id", authenticateUser, async (req, res) =
             await transaction.save();
         } else {
             // Add a new transaction
-            transaction = new Transaction({
+            let services = [];
+
+            // Iterate over req.body.services array
+            for (let i = 0; i < req.body.services.length; i++) {
+                const service = req.body.services[i];
+                const serviceObject = {
+                    unit: service.unit,
+                    quantity: service.quantity || 1 // Default quantity to 1 if not provided
+                };
+                services.push(serviceObject);
+            }
+
+            // Create the transaction object
+            const transaction = new Transaction({
                 contactPerson: req.body.contactPerson,
                 contactNumber: req.body.contactNumber,
                 email: req.body.email,
-                services: req.body.services,
+                services: services,
                 startingDate: req.body.startingDate,
                 dueDate: req.body.dueDate,
                 location: req.body.location,
-                status: req.body.status
+                status: req.body.status,
             });
 
             await transaction.save();
         }
 
-        res.redirect('/admin/admin');
+        res.status(200).json({ message: 'Transaction saved successfully' });
     } catch (error) {
         console.error("Error adding or editing transaction:", error);
-        res.status(500).render('error', { error: "Error adding or editing transaction" });
+        res.status(500).json({ error: "Error adding or editing transaction: " + error.message });
     }
 });
 
@@ -448,6 +467,18 @@ app.get("/admin/admin", authenticateUser, async (req, res) => {
     } catch (error) {
         console.error("Error fetching transactions:", error);
         res.status(500).render('error', { error: "Error fetching transactions" });
+    }
+});
+
+app.get("/admin/getData", async (req, res) => {
+    try {
+        const admin = await Admin.find().exec();
+        const services = await Services.find().exec();
+        const transaction = await Transaction.find().exec();
+        res.json({admin, services, transaction});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" }); // Return a 500 error response
     }
 });
 
