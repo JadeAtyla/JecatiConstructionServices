@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/log.css">
+    <link rel="shortcut icon" href="/images/JecatiLogo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form action="/admin/login" method="post">
+        <img src="/images/JecatiLogo.png" alt="Jecati Logo">
+        <h1>Jecati Construction Services</h1>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/admin/signup">Sign Up</a></p>
+    </form>
+</body>
+</html>

@@ -17,35 +17,39 @@
             <li><button onclick="showSection('profile')">Profile</button></li>
             <li><button onclick="showSection('services')">Services</button></li>
             <li><button onclick="showSection('transactions')">Transactions</button></li>
-            <!-- <li><button onclick="showSection('services')">Cancelled</button></li>
-            <li><button onclick="showSection('services')">On Going</button></li> -->
         </ul>
-        <p>Log out</p>
+        <form action="/admin/logout" method="GET" id="logoutForm">
+        <button type="submit" id="logout" onclick="confirmLogout(event)">Log out</button>
+    </form>
     </div>
     <div id="profile" class="content">
         <h1>Edit Profile</h1>
-        <div class="form-group">
-            <label for="profileName">Profile Name:</label>
-            <input type="text" id="profileName" value="John Doe">
-        </div>
-        <div class="form-group">
-            <label for="contactInfo">Contact Info:</label>
-            <input type="text" id="contactInfo" value="john.doe@example.com">
-        </div>
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" value="johndoe123">
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" value="password123">
-        </div>
-        <div class="form-group">
-            <button id="edit">Edit</button>
-            <button id="save">Save Changes</button>
-            <button id="cancel">Cancel</button>
-        </div>
+        <% if (user) { %>
+            <div class="form-group">
+                <label for="profileName">Fullname:</label>
+                <input type="text" id="profileName" value="<%= user.fullname %>">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" value="<%= user.email %>">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" value="<%= user.password %>">
+            </div>
+            <div class="form-group">
+                <button id="edit">Edit</button>
+                <button id="save">Save Changes</button>
+                <button id="cancel">Cancel</button>
+            </div>
+        <% } else { %>
+            <h1>No Data</h1>
+        <% } %>        
+        
         <h2>Past Admins Table</h2>
+        <div class="search profile">
+            <input type="text" name="search-transactions" placeholder="Search...">
+        </div>
         <select name="sorter" id="admin-sorter">
             <option value="Sort By Name">Sort By Name</option>
             <option value="Sort By Descending Order">Sort By Descending Order</option>
@@ -70,10 +74,10 @@
                                     <%= index + 1 %>
                                 </td>
                                 <td>
-                                    <%= row.name %>
+                                    <%= row.fullname %>
                                 </td>
                                 <td>
-                                    <%= row.username %>
+                                    <%= row.email %>
                                 </td>
                                 <td>
                                     <%= row.startingDate %>
@@ -93,6 +97,9 @@
     </div>
     <div id="transactions" class="content">
         <h1>Transactions</h1>
+        <div class="search transactions">
+            <input type="text" name="search-transactions" placeholder="Search...">
+        </div>
         <select name="sorter" class="admin-sorter">
             <option value="Sort By Name">Sort By Name</option>
             <option value="Sort By Descending Order">Sort By Descending Order</option>
@@ -123,17 +130,20 @@
                                 <td><%= row.contactNumber %></td>
                                 <td><%= row.email %></td>
                                 <td>
-                                    <select id="<%= row.email %>">
-                                        <% row.services.forEach(service => { %>
-                                            <option value="<%= service %>"><%= service %></option>
-                                        <% }) %>
-                                    </select>
+                                    <% row.services.forEach((service, serviceIndex) => { %>
+                                        <%= service.type %> - <%= service.subcategory %>
+                                        <% if (serviceIndex < row.services.length - 1) { %>
+                                            <br>
+                                        <% } %>
+                                    <% }); %>
                                 </td>
-                                <td><%= row.startingDate %></td>
-                                <td><%= row.dueDate %></td>
+                                <td><%= row.startingDate.toLocaleDateString() %></td>
+                                <td><%= row.dueDate.toLocaleDateString() %></td>
                                 <td><%= row.location %></td>
                                 <td><%= row.status %></td>
-                                <td><button>Edit</button></td>
+                                <td>
+                                <a href="/admin/add-edit-transaction/<%= row._id %>">Edit</a>
+                                </td>
                             </tr>
                         <% }); %>
                     </tbody>
@@ -146,57 +156,50 @@
     </div>
     <div id="services" class="content">
         <h1>Services</h1>
+        <div class="search service">
+            <input type="text" name="search-service" placeholder="Search...">
+        </div>
         <div class="top-buttons">
             <select name="sorter" id="admin-sorter">
                 <option value="Sort By Name">Sort By Name</option>
                 <option value="Sort By Descending Order">Sort By Descending Order</option>
                 <option value="Sort By Ascending Order">Sort By Ascending Order</option>
             </select>
-            <button id="addService" onclick="window.location.href='/admin/services'">+ Add Service</button>
+            <button id="addService" onclick="window.location.href='/admin/add-edit-service/'">+ Add Service</button>
         </div>
         <div style="overflow-x: auto;">
-            <% if (services && services.length> 0) { %>
+            <% if (services && services.length > 0) { %>
                 <table id="transaction-table">
                     <thead>
                         <tr>
-                            <th>No. </th>
+                            <th>No.</th>
                             <th>Category</th>
                             <th>Unit</th>
                             <th>Price</th>
                             <th>Added Date</th>
                             <th>Availability</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% services.forEach((row, index)=> { %>
+                        <% services.forEach((row, index) => { %>
                             <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= row.category %></td>
+                                <td><%= row.unit %></td>
+                                <td><%= row.price %></td>
+                                <td><%= row.addedDate %></td>
+                                <td><%= row.availability %></td>
                                 <td>
-                                    <%= index + 1%>
+                                    <a href="/admin/add-edit-service/<%= row._id %>">Edit</a>
                                 </td>
-                                <td>
-                                    <%= row.category %>
-                                </td>
-                                <td>
-                                    <%= row.unit %>
-                                </td>
-                                <td>
-                                    <%= row.price %>
-                                </td>
-                                <td>
-                                    <%= row.addedDate %>
-                                </td>
-                                <td>
-                                    <%= row.availability %>
-                                </td>
-                                <td><button>Edit</button></td>
                             </tr>
-                            <% }) %>
+                        <% }) %>
                     </tbody>
                 </table>
-                <% } else { %>
-                    <h1>No Data</h1>
-                    <% } %>
+            <% } else { %>
+                <h1>No Data</h1>
+            <% } %>
         </div>
     </div>
 </body>
