@@ -118,7 +118,7 @@ span {
 /* Body/Main */
 main{
     display: flex;
-    height: 2000px;
+    height: 2130px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -193,7 +193,7 @@ main{
 
 .lineone {
     position: absolute;
-    top: 14.5%; /* Adjust this to position the line vertically within the circle */
+    top: 12.7%; /* Adjust this to position the line vertically within the circle */
     left: 55%; /* Adjust this to position the line horizontally within the circle */
     transform: translate(-50%, -50%); /* Center the SVG */
     width: 100%; /* Make SVG take full width of the circle */
@@ -266,10 +266,10 @@ main{
 
 .roundedrectanglefour {
     position: absolute;
-    top: 1685px;
+    top: 1765px;
     left:305px;
-    width: 680px;
-    height: 200px;
+    width: 695px;
+    height: 305px;
     background-color: #14213D;
     border-radius: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
@@ -316,7 +316,7 @@ main{
 
 .rectanglefour{
     position: absolute;
-    top: 1430px;
+    top: 1440px;
     left: -20px;
     width: 1370px;
     height: 125px;
@@ -422,6 +422,101 @@ ul.missionlist{
     text-align: justify;
 }
 
+
+.pc{
+    position: absolute;
+    top: 1493px;
+    left: 310px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+}
+.hc{
+    position: absolute;
+    top: 1493px;
+    left: 615px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+}
+.ye{
+    position: absolute;
+    top: 1493px;
+    left: 952px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+}
+
+.project{
+    position: absolute;
+    top: 1528px;
+    left: 278px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+}
+.customers{
+    position: absolute;
+    top: 1528px;
+    left: 594px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+}
+
+.years{
+    position: absolute;
+    top: 1528px;
+    left: 906px;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #14213D;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+}
+.wordfour{
+    position: absolute;
+    top: 1820px   ; /* x coordinate */
+    left: 345px;
+    line-height: 1.0;
+    margin-bottom: 10px ; /* Adjust this value to control the spacing from the bottom */
+    color: #FCA311;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 720;
+}
+
+.wordtfive{
+    position: absolute;
+    top: 1855px; /* y coordinate */
+    left: 345px   ; /* x coordinate */
+    line-height: 1.0;
+    margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
+    color: #ffffff;
+    font-size: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 820;
+}
+
+.sirrygs{
+    position: absolute;
+    top: 1779px;
+    left: 652px;
+    width: 330px;
+    height: 290px;
+   
+}
 
 hr{
     margin-top: 50px;
