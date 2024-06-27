@@ -17,7 +17,7 @@ body {
 
 /* Header */
 header .container {
-    width: calc(100% - 3px);
+    width:100%;
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
@@ -27,8 +27,7 @@ header .container {
     position: fixed;
     z-index: 100;
     top: 0;
-    left: 1.25px;
-    border-radius: 20px;
+    border-radius:0 0 20px 20px;;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px #999;
 }
@@ -631,7 +630,7 @@ main{
     justify-content: center;
     align-items: center;
     width: 100%;
-    top: 37rem;
+    top: 47rem;
     z-index: 98;
 }
 
@@ -655,7 +654,7 @@ main{
     color: rgb(255, 255, 255);
 }
 #floating-specialization .sub-container h2{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
 
 }
