@@ -96,6 +96,8 @@ nav ul li button.inquire-now {
     cursor: pointer;
     border-radius: 50px; /* Make the button round */
     font-weight: bold;
+    box-shadow: 0 5px #999; /* Add shadow for 3D effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
 nav ul li button.inquire-now:hover {
