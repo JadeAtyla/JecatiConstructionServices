@@ -1,7 +1,6 @@
 
 /* General Styles */
 * {
-    font-size: 20px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +19,7 @@ body {
 
 /* Header Styles */
 header .container {
-    width: calc(100% - 3px); /* Adjust the width to allow space for rounded corners */
+    width: calc(100% - 3px);
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
@@ -30,9 +29,9 @@ header .container {
     position: fixed;
     z-index: 100;
     top: 0;
-    left: 1.25px; /* Centering the container */
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+    left: 1.25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px #999;
 }
 
@@ -53,8 +52,8 @@ header h2 {
 }
 
 .jecati {
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
