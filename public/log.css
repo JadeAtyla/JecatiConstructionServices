@@ -37,7 +37,7 @@ label {
     text-align: left; /* Align labels to the left */
 }
 
-input {
+input, #error-message{
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -71,4 +71,9 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+#error-message{
+    background-color: tomato;
+    color: darkred;
 }
