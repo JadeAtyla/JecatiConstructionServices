@@ -13,6 +13,9 @@
     <form action="/admin/login" method="post">
         <img src="/images/JecatiLogo.png" alt="Jecati Logo">
         <h1>Jecati Construction Services</h1>
+        <% if (error) { %>
+            <label id="error-message"><%= error %></label>
+        <% } %>
         <label for="email">Email:</label>
         <input type="text" name="email" id="email" required>
         <label for="password">Password:</label>

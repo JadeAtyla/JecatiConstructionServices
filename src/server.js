@@ -63,7 +63,7 @@ app.get("/admin/services", (req, res) => {
 });
 // To admin login
 app.get("/admin/login", (req, res) => {
-    res.render("admin/login");
+    res.render("admin/login", {error: null});
 });
 // To admin sign up
 app.get("/admin/signup", (req, res) => {
@@ -222,17 +222,18 @@ app.post("/admin/login", async (req, res) => {
         const user = await Admin.findOne({ email: email });
 
         if (!user) {
-            return res.status(400).send('Invalid email');
+            return res.render("admin/login", {error: "Invalid Username"});
+            // return res.status(400).send('Invalid email');
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
-            return res.status(400).send('Invalid password');
+            return res.render("admin/login", {error: "Invalid Password"});
         }
 
         if (!user.verified) {
-            return res.status(400).send('Please verify your account before logging in');
+            return res.render("admin/login", {error: "Account not verified"});
         }
 
         // Set user in session
@@ -241,7 +242,8 @@ app.post("/admin/login", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error logging in');
+        return res.render("admin/login", {error: "Error logging in"});
+        // res.status(500).send('Error logging in');
     }
 });
 
