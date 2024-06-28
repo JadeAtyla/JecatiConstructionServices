@@ -237,7 +237,6 @@ app.post("/admin/login", async (req, res) => {
 
         // Set user in session
         req.session.user = { _id: user._id, email: user.email };
-        userAdmin = user._id; // Set userAdmin to the authenticated user's ID
         res.redirect('/admin/admin');
 
     } catch (error) {
@@ -262,10 +261,10 @@ app.get("/admin/admin", authenticateUser, async (req, res) => {
         const admin = await Admin.find().exec();
         const transaction = await Transaction.find().exec();
         const services = await Services.find().exec();
-        let user = "";
+        let user = null;
 
-        if (userAdmin) {
-            user = await Admin.findById(userAdmin).exec();
+        if (req.session.user) {
+            user = await Admin.findById(req.session.user._id).exec();
         }
 
         res.render('admin/admin', {
