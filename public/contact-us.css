@@ -1288,8 +1288,7 @@ footer .container {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-between;
-    padding: 40px 50px;
+    padding: 10px 15px;
 }
 
 .footer-content {
@@ -1319,11 +1318,11 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-#copyright{
+#copyright {
     width: 100%;
-    background-color: black;
+    background-color: #080E1C;
     color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1393,13 +1392,13 @@ footer .copyright {
 }
 
 /* Footer */
-footer {
+footer .container {
     width: 100%;
     background-color: #14213D;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .footer-container {
@@ -1416,21 +1415,6 @@ footer {
     gap: 20px;
 }
 
-.copyright-section {
-    text-align: center;
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    background-color: #080E1C;
-}
-.copyright-section .container{
-    padding: 20px;
-}
-.copyright-section .container a{
-    text-decoration: none;
-    color: white;
-}
 .phone-section{
     display: flex;
     flex-direction: row;
@@ -1446,13 +1430,17 @@ footer {
     padding: 0 20px;
 }
 
-.about h2,
+.about h2{
+    color: white;
+    font-size: 21px;
+    margin-bottom: 10px; 
+}
 .services h2,
 .work h2,
-.phone h2,
-.copyright p {
+.copyright p,
+.copyright a {
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
@@ -1470,16 +1458,15 @@ footer {
     list-style: none;
     padding: 0;
 }
-
+.about p{
+    margin-top: 20px;
+}
 .about .container p,
 .services ul li,
-.work ul li,
-.phone ul li, 
-.copyright-section .container p, 
-.copyright-section .container a{
+.work ul li{
     color: white;
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 14px;
 }
 .social-section ul{
     margin-top: 20px;
@@ -1487,8 +1474,16 @@ footer {
     flex-direction: row;
     gap: 10px;
 }
+.phone ul li{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
 .phone .container h2{
     color: orange;
+    font-size: 17px;
+    margin-bottom: 20px;
 }
 
 .footer-container .container{
@@ -1501,7 +1496,7 @@ footer {
 }
 .footer-hr{
     width: 30%;
-    margin: 20px 0 20px 0;
+    margin: 0px 100px 20px 0;
     border: 1px solid orange;
 }
 
