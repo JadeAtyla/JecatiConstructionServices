@@ -239,7 +239,7 @@ app.post("/admin/login", async (req, res) => {
 
         // Set user in session
         req.session.user = { _id: user._id, email: user.email };
-        res.redirect('/admin/admin');
+        res.redirect('/admin/admin/');
 
     } catch (error) {
         console.error(error);

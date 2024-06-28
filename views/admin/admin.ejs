@@ -24,14 +24,14 @@
     </div>
     <div id="profile" class="content">
         <h1>Edit Profile</h1>
-        <% if (admin) { %>
+        <% if (user) { %>
             <div class="form-group">
                 <label for="profileName">Fullname:</label>
-                <input type="text" id="profileName" value="<%= admin.fullname %>">
+                <input type="text" id="profileName" value="<%= user.fullname %>">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="text" id="email" value="<%= admin.email %>">
+                <input type="text" id="email" value="<%= user.email %>">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
