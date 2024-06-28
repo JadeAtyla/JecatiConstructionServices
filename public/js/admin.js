@@ -38,13 +38,80 @@ document.addEventListener("DOMContentLoaded", function() {
     const saveButton = document.getElementById('save');
     const cancelButton = document.getElementById('cancel');
     const profileInputs = document.querySelectorAll('#profile .form-group input');
+    const passwords = document.getElementsByClassName('passwords');
+    const passwordField = document.getElementsByClassName('password-field');
+    const confirmPasswordPopup = document.getElementsByClassName('confirm-password-popup');
+
+    const confirmPasswordButtonsOK = document.getElementsByClassName('confirm-password-ok');
+    const confirmPasswordButtonsCancel = document.getElementsByClassName('confirm-password-cancel');
+
+    const editProfileSuccess = document.getElementsByClassName('edit-profile-success');
+    const editProfileSuccessOK = document.getElementsByClassName('edit-profile-success-ok');
+    
+    const incompleteFieldPopup = document.getElementsByClassName('incomplete-field-popup');
+    const incompleteFieldOK = document.getElementsByClassName('incomplete-field-ok');
+
+    const noChangesPopup = document.getElementsByClassName('no-changes-popup');
+    const noChangesOK = document.getElementsByClassName('no-changes-ok');
+
+
+    confirmPasswordButtonsOK[0].addEventListener('click', function() {
+    /**  if (passwordField[0] !== user.password ) { //compare old password and user.password
+            console.log('')
+        }**/
+        if (passwordField[1].value !== passwordField[2].value) { //compare new and confirm password
+            console.log('new password and confirm password does not match');
+        } else {
+            editProfileSuccess[0].style.display = 'inline-block';
+        }
+        confirmPasswordPopup[0].style.display = 'none';
+        
+    });
+
+    confirmPasswordButtonsCancel[0].addEventListener('click', function() {
+
+        confirmPasswordPopup[0].style.display = 'none';
+        clearValues(passwordField);
+    });
+
+    incompleteFieldOK[0].addEventListener('click', function() {
+        incompleteFieldPopup[0].style.display = 'none';
+
+    });
+
+    noChangesOK[0].addEventListener('click', function() {
+        noChangesPopup[0].style.display = 'none';
+    })
+    editProfileSuccessOK[0].addEventListener('click', function() {
+        editProfileSuccess[0].style.display = 'none';
+        clearValues(passwordField);
+    } ); 
+
+    function clearValues(elements) {
+        for (i = 0;i<elements.length;i++) {
+            elements[i].value = null;
+        }
+    }
+
+    function checkPasswordFieldValue(elements) {
+        if (passwordField[0].value.length != 0 | passwordField[1].value.length != 0 | passwordField[0].value.length != 0) {
+            if (passwordField[0].value.length != 0 & passwordField[1].value.length != 0 & passwordField[0].value.length != 0) {
+                confirmPasswordPopup[0].style.display = 'inline-block';
+            } else {
+                incompleteFieldPopup[0].style.display = 'inline-block';
+            }
+        } else {
+            noChangesPopup[0].style.display = 'inline-block';
+        }
+
+    }
 
     editButton.addEventListener('click', function() {
         profileInputs.forEach(input => {
             input.removeAttribute('disabled');
         });
 
-
+        passwords[0].style.display = 'inline-block';
         saveButton.style.display = 'inline-block';
         cancelButton.style.display = 'inline-block';
         editButton.style.display = 'none';
@@ -54,10 +121,12 @@ document.addEventListener("DOMContentLoaded", function() {
         profileInputs.forEach(input => {
             input.setAttribute('disabled', 'true');
         });
-
+        checkPasswordFieldValue(passwordField);
+        passwords[0].style.display = 'none'
         saveButton.style.display = 'none';
         cancelButton.style.display = 'none';
         editButton.style.display = 'inline-block';
+        clearValues(passwordField);
     });
 
     cancelButton.addEventListener('click', function() {
@@ -65,10 +134,11 @@ document.addEventListener("DOMContentLoaded", function() {
         profileInputs.forEach(input => {
             input.setAttribute('disabled', 'true');
         });
-
+        passwords[0].style.display = 'none'
         saveButton.style.display = 'none';
         cancelButton.style.display = 'none';
         editButton.style.display = 'inline-block';
+        clearValues(passwordField);
     });
 
     window.showSection = showSection;
