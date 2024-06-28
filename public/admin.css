@@ -129,6 +129,37 @@ input {
     transform: scale(0.9);
 }
 
+.confirm-password-buttons button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: display 2s ease-in-out;
+}
+
+.confirm-password-buttons button:nth-child(1) {
+    background-color: #4CAF50;
+}
+.confirm-password-buttons button:nth-child(2) {
+    background-color: tomato;
+}
+
+.confirm-password-buttons button:active {
+    transform: scale(0.9);
+}
+
+.password-field {
+    margin-bottom: 10px;
+}
+
+.passwords {
+    display: none;
+}
+
 table {
     width: fit-content;
     border-collapse: collapse;
@@ -273,3 +304,70 @@ select option::after{
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
+.confirm-password-popup {
+    background-color: white;
+    width: 25%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
+
+.edit-profile-success {
+    background-color: white;
+    width: 25%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
+
+.incomplete-field-popup {
+    background-color: white;
+    width: 25%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
+
+.no-changes-popup {
+    background-color: white;
+    width: 25%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
