@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +36,12 @@
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" value="<%= user.password %>">
+                <!--input type="password" id="password" value="<%= user.password %>"-->
+                <div class="passwords">
+                    <input type="password" id="old-password" class="password-field" placeholder="Old Password">
+                    <input type="password" id="new-password" class="password-field" placeholder="New Password">
+                    <input type="password" id="confirm-password" class="password-field" placeholder="Confirm Password">
+                </div>            
             </div>
             <div class="form-group">
                 <button id="edit">Edit</button>
@@ -50,11 +56,19 @@
         <div class="search profile">
             <input type="text" name="search-transactions" placeholder="Search...">
         </div>
-        <select name="sorter" id="admin-sorter">
-            <option value="Sort By Name">Sort By Name</option>
-            <option value="Sort By Descending Order">Sort By Descending Order</option>
-            <option value="Sort By Ascending Order">Sort By Ascending Order</option>
-        </select>
+        <div class="sort-order">
+            <select name="sorter" id="admin-sorter">
+                <option value="Sort By Name">Sort By Name</option>
+                <option value="Sort By Username">Sort By Username</option>
+                <option value="Sort By Start Date">Sort By Start Date</option>
+                <option value="Sort By End Date">Sort By End Date</option>
+            </select>
+            <select name="order" id="admin-order">
+                <option value="Order By Descending Order">Order By Descending Order</option>
+                <option value="Order By Ascending Order">Order By Ascending Order</option>
+            </select>
+        </div>
+        
         <div style="overflow-x: auto;">
             <% if (admin && admin.length> 0) { %>
                 <table id="admins-table">
@@ -209,6 +223,14 @@
                 <h1>No Data</h1>
             <% } %>
         </div>
+    </div>
+    <div class="confirm-password-popup">
+        <h2>Change Password</h2>
+        <p>Are you sure on changing your password?</p>
+        <span class="confirm-password-buttons">
+            <button class="ok">OK</button>
+            <button class="cancel">Cancel</button>
+        </span>    
     </div>
 </body>
 <script src="/js/admin.js">

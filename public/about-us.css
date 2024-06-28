@@ -21,7 +21,7 @@ body {
 
 /* Header Styles */
 header .container {
-    width: calc(100% - 3px); /* Adjust the width to allow space for rounded corners */
+    width:100%;
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
@@ -31,9 +31,8 @@ header .container {
     position: fixed;
     z-index: 100;
     top: 0;
-    left: 1.25px; /* Centering the container */
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+    border-radius:0 0 20px 20px;;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px #999;
 }
 
@@ -193,7 +192,7 @@ main{
 
 .lineone {
     position: absolute;
-    top: 12.7%; /* Adjust this to position the line vertically within the circle */
+    top: 12.2%; /* Adjust this to position the line vertically within the circle */
     left: 55%; /* Adjust this to position the line horizontally within the circle */
     transform: translate(-50%, -50%); /* Center the SVG */
     width: 100%; /* Make SVG take full width of the circle */
@@ -487,7 +486,7 @@ ul.missionlist{
 }
 .wordfour{
     position: absolute;
-    top: 1820px   ; /* x coordinate */
+    top: 1865px   ; /* x coordinate */
     left: 345px;
     line-height: 1.0;
     margin-bottom: 10px ; /* Adjust this value to control the spacing from the bottom */
@@ -496,17 +495,19 @@ ul.missionlist{
     font-family: 'Inter', sans-serif;
     font-weight: 720;
 }
+h3 {
+    font-weight: bolder;
+}
 
 .wordtfive{
     position: absolute;
-    top: 1855px; /* y coordinate */
+    top: 1905px; /* y coordinate */
     left: 345px   ; /* x coordinate */
     line-height: 1.0;
     margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
     color: #ffffff;
     font-size: 40px;
     font-family: 'Inter', sans-serif;
-    font-weight: 820;
 }
 
 .sirrygs{
@@ -515,6 +516,7 @@ ul.missionlist{
     left: 652px;
     width: 330px;
     height: 290px;
+    font-weight: bolder;
    
 }
 
@@ -523,7 +525,7 @@ hr{
     width: 90%;
 }
 /* Footer */
-footer {
+footer {    
     width: 100%;
     background-color: #14213D;
     display: flex;
