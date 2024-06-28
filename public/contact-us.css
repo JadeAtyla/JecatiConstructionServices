@@ -1281,6 +1281,7 @@ main{
     font-size: 50px;
     color: #14213D;
 }
+
 /* Footer */
 footer .container {
     width: 100%;
@@ -1391,22 +1392,6 @@ footer .copyright {
     }
 }
 
-/* Footer */
-footer .container {
-    width: 100%;
-    background-color: #14213D;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 30px 30px;
-}
 .logo-section{
     display: flex;
     flex-direction: row;

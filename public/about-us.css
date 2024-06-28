@@ -133,6 +133,12 @@ main{
     background-color: #14213D;
     border-radius: 70%;
 }
+.about, .services, .work, .phone {
+    position: relative;
+    flex: 1;
+    padding: 0 20px;
+}
+
 .aboutus {
     position: absolute;
     top: 155px; /* y coordinate */
