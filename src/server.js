@@ -451,17 +451,18 @@ app.post("/admin/add-edit-transaction/:id", async (req, res) => {
     }
 });
 
-app.get("/admin/getData", async (req, res) => {
+app.get("/getData", async (req, res) => {
     try {
-        const admin = await Admin.find().exec();
-        const services = await Services.find().exec();
-        const transaction = await Transaction.find().exec();
-        res.json({admin, services, transaction});
+      const admin = await Admin.find().exec();
+      const services = await Services.find().exec();
+      const transaction = await Transaction.find().exec();
+      res.type("json"); // Set the Content-Type header to application/json
+      return res.json({ admin, services, transaction }); // Send the JSON response
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Internal Server Error" }); // Return a 500 error response
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" }); // Return a 500 error response
     }
-});
+  });
 
 app.post("/admin/drop-services", async (req, res) => {
     try {
