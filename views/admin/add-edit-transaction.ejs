@@ -59,8 +59,8 @@
 
        </div>
     <div class="buttonGroup">
-        <button id="submit" onclick="closePopUp()">Submit</button>
-        <button id="cancel" onclick="closePopUp()">Cancel</button>
+        <button id="submit">Submit</button>
+        <button id="cancel" onclick="window.location.reload()">Cancel</button>
     </div>
     </div>
 
@@ -150,7 +150,8 @@
         .then(responseData => {
             console.log('Post response:', responseData);
             // Redirect or update the UI as needed
-            window.location.href = '/admin/admin'; // Redirect to the admin page
+            // window.location.href = '/admin/admin'; // Redirect to the admin page
+            window.location.reload();
         })
         .catch(error => {
             console.error('Post error:', error);
@@ -160,6 +161,23 @@
     //Transfer data to the post route
     const checkButton = document.getElementById('save'); // Ensure you have a button with id="checkButton"
     checkButton.addEventListener('click', () => {
+        const checkedServices = getCheckedCheckboxes();
+        const transactionId = "<%= transaction ? transaction._id : '' %>"; // Ensure transaction ID is correctly populated by your server-side code
+        const dataToPost = {
+            contactPerson: document.getElementById('contactPerson').value, // Ensure you have these input fields in your HTML
+            contactNumber: document.getElementById('contactNumber').value,
+            email: document.getElementById('email').value,
+            services: checkedServices,
+            startingDate: document.getElementById('startingDate').value,
+            dueDate: document.getElementById('dueDate').value,
+            location: document.getElementById('location').value,
+            status: document.getElementById('status').value
+        };
+        postCheckedCheckboxes(transactionId, dataToPost);
+    });
+
+    const submitButton = document.getElementById('submit'); // Ensure you have a button with id="checkButton"
+    submitButton.addEventListener('click', () => {
         const checkedServices = getCheckedCheckboxes();
         const transactionId = "<%= transaction ? transaction._id : '' %>"; // Ensure transaction ID is correctly populated by your server-side code
         const dataToPost = {

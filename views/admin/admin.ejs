@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,19 +55,11 @@
         <div class="search profile">
             <input type="text" name="search-transactions" placeholder="Search...">
         </div>
-        <div class="sort-order">
-            <select name="sorter" id="admin-sorter">
-                <option value="Sort By Name">Sort By Name</option>
-                <option value="Sort By Username">Sort By Username</option>
-                <option value="Sort By Start Date">Sort By Start Date</option>
-                <option value="Sort By End Date">Sort By End Date</option>
-            </select>
-            <select name="order" id="admin-order">
-                <option value="Order By Descending Order">Order By Descending Order</option>
-                <option value="Order By Ascending Order">Order By Ascending Order</option>
-            </select>
-        </div>
-        
+        <select name="sorter" id="admin-sorter">
+            <option value="Sort By Name">Sort By Name</option>
+            <option value="Sort By Descending Order">Sort By Descending Order</option>
+            <option value="Sort By Ascending Order">Sort By Ascending Order</option>
+        </select>
         <div style="overflow-x: auto;">
             <% if (admin && admin.length> 0) { %>
                 <table id="admins-table">
@@ -83,23 +74,25 @@
                     </thead>
                     <tbody>
                         <% admin.forEach((row, index)=> { %>
-                            <tr>
-                                <td>
-                                    <%= index + 1 %>
-                                </td>
-                                <td>
-                                    <%= row.fullname %>
-                                </td>
-                                <td>
-                                    <%= row.email %>
-                                </td>
-                                <td>
-                                    <%= row.startingDate %>
-                                </td>
-                                <td>
-                                    <%= row.endDate %>
-                                </td>
-                            </tr>
+                            <% if (row.verified) { %>
+                                <tr>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td>
+                                        <%= row.fullname %>
+                                    </td>
+                                    <td>
+                                        <%= row.email %>
+                                    </td>
+                                    <td>
+                                        <%= row.startingDate %>
+                                    </td>
+                                    <td>
+                                        <%= row.endDate %>
+                                    </td>
+                                </tr>
+                            <% } %>
                             <% }) %>
                     </tbody>
                 </table>
@@ -179,11 +172,15 @@
                 <option value="Sort By Descending Order">Sort By Descending Order</option>
                 <option value="Sort By Ascending Order">Sort By Ascending Order</option>
             </select>
+            <div class="button-group">
             <button id="addService" onclick="window.location.href='/admin/add-edit-service/'">+ Add Service</button>
+            <button id="dropService">- Drop Service</button>
+            <button id="confirmDrop">Confirm Drop</button>
+            </div>
         </div>
         <div style="overflow-x: auto;">
             <% if (services && services.length > 0) { %>
-                <table id="transaction-table">
+                <table id="service-table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -197,17 +194,19 @@
                     </thead>
                     <tbody>
                         <% services.forEach((row, index) => { %>
-                            <tr>
-                                <td><%= index + 1 %></td>
-                                <td><%= row.category %></td>
-                                <td><%= row.unit %></td>
-                                <td><%= row.price %></td>
-                                <td><%= row.addedDate %></td>
-                                <td><%= row.availability %></td>
-                                <td>
-                                    <a href="/admin/add-edit-service/<%= row._id %>">Edit</a>
-                                </td>
-                            </tr>
+                            <% if (!row.deleted) { %>
+                                <tr>
+                                    <td id="<%= row.unit %>"><%= index + 1 %></td>
+                                    <td><%= row.category %></td>
+                                    <td><%= row.unit %></td>
+                                    <td><%= row.price %></td>
+                                    <td><%= row.addedDate %></td>
+                                    <td><%= row.availability %></td>
+                                    <td>
+                                        <a href="/admin/add-edit-service/<%= row._id %>">Edit</a>
+                                    </td>
+                                </tr>
+                            <% } %>
                         <% }) %>
                     </tbody>
                 </table>
@@ -216,15 +215,9 @@
             <% } %>
         </div>
     </div>
-    <div class="confirm-password-popup">
-        <h2>Change Password</h2>
-        <p>Are you sure on changing your password?</p>
-        <span class="confirm-password-buttons">
-            <button class="ok">OK</button>
-            <button class="cancel">Cancel</button>
-        </span>    
-    </div>
 </body>
-<script src="/js/admin.js"></script>
+<script src="/js/admin.js">
+   
+</script>
 
 </html>
