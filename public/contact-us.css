@@ -275,11 +275,10 @@ hr {
 }
 
 .info-container h3 {
-    color:orange;
+    color: orange;
     font-size: 28px;
     font-weight: bold;
 }
-
 
 .info-container h2 {
     color: #fffefe;
@@ -300,19 +299,38 @@ hr {
     margin: 0 0 5px;
     font-size: 21px;
     color: orange;
+    position: relative;
+    padding-left: 70px; /* Adjust to provide space for the circle */
+}
+
+.info-item h4::before {
+    content: "";
+    width: 60px; /* Diameter of the circle */
+    height: 60px; /* Diameter of the circle */
+    background-color: orange; /* Color of the circle */
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 110%;
+    transform: translateY(-50%);
 }
 
 .info-item p {
     margin: 0;
     color: #ffffff;
+    position: relative;
+    padding-left: 70px;
 }
 
 .gmapsContact {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
+    padding-left: 15%;
     height: auto;
-    max-width: 400px;
+    max-width: 350px;
+    border-bottom: 1px solid orange;
 }
+
 
 /*Popup*/
 .popup{
