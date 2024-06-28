@@ -249,22 +249,6 @@ body {
     object-fit: cover;
 }
 
-/* Footer */
-footer {
-    width: 100%;
-    background-color: #14213D;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: auto;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 30px 30px;
-}
 .logo-section{
     display: flex;
     flex-direction: row;
@@ -1336,7 +1320,8 @@ footer .container {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 40px 50px;
+    padding: 10px 15px;
+
 }
 
 .footer-content {
@@ -1366,11 +1351,11 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-#copyright{
+#copyright {
     width: 100%;
-    background-color: black;
+    background-color: #080E1C;
     color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1426,6 +1411,112 @@ footer .copyright {
   right: 10%;
   z-index: 100;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .booking-container, .info-container {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.logo-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone-section{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.about,
+.services,
+.work,
+.phone {
+    position: relative;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.about h2{
+    color: white;
+    font-size: 21px;
+    margin-bottom: 10px; 
+}
+.services h2,
+.work h2,
+.copyright p,
+.copyright a {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.about p,
+.services ul,
+.work ul,
+.phone p {
+    color: white;
+}
+
+.about ul,
+.services ul,
+.work ul,
+.phone ul {
+    list-style: none;
+    padding: 0;
+}
+.about p{
+    margin-top: 20px;
+}
+.about .container p,
+.services ul li,
+.work ul li{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.social-section ul{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.phone ul li{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.phone .container h2{
+    color: orange;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.footer-container .container{
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.footer-container .container p{
+    margin-top: 20px;
+}
+.footer-hr{
+    width: 30%;
+    margin: 0px 100px 20px 0;
+    border: 1px solid orange;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
     * {
@@ -1453,6 +1544,7 @@ footer .copyright {
     .footer-content > div {
         min-width: 100%;
     }
+
     .footer-content p,
     .footer-content div ul li a{
     font-size: 11px;
