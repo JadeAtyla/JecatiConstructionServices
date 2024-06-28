@@ -134,6 +134,12 @@ main{
     background-color: #14213D;
     border-radius: 70%;
 }
+.about, .services, .work, .phone {
+    position: relative;
+    flex: 1;
+    padding: 0 20px;
+}
+
 .aboutus {
     position: absolute;
     top: 155px; /* y coordinate */
@@ -193,7 +199,7 @@ main{
 
 .lineone {
     position: absolute;
-    top: 12.7%; /* Adjust this to position the line vertically within the circle */
+    top: 15%; /* Adjust this to position the line vertically within the circle */
     left: 55%; /* Adjust this to position the line horizontally within the circle */
     transform: translate(-50%, -50%); /* Center the SVG */
     width: 100%; /* Make SVG take full width of the circle */
@@ -487,7 +493,7 @@ ul.missionlist{
 }
 .wordfour{
     position: absolute;
-    top: 1820px   ; /* x coordinate */
+    top: 1870px   ; /* x coordinate */
     left: 345px;
     line-height: 1.0;
     margin-bottom: 10px ; /* Adjust this value to control the spacing from the bottom */
@@ -499,12 +505,12 @@ ul.missionlist{
 
 .wordtfive{
     position: absolute;
-    top: 1855px; /* y coordinate */
+    top: 1900px; /* y coordinate */
     left: 345px   ; /* x coordinate */
     line-height: 1.0;
     margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
     color: #ffffff;
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Inter', sans-serif;
     font-weight: 820;
 }
@@ -523,7 +529,7 @@ hr{
     width: 90%;
 }
 /* Footer */
-footer {
+footer {    
     width: 100%;
     background-color: #14213D;
     display: flex;
@@ -547,22 +553,6 @@ footer {
     gap: 20px;
 }
 
-.copyright-section {
-    font-size: 20px;
-    text-align: center;
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    background-color: #080E1C;
-}
-.copyright-section .container{
-    padding: 20px;
-}
-.copyright-section .container a{
-    text-decoration: none;
-    color: white;
-}
 .phone-section{
     display: flex;
     flex-direction: row;
@@ -597,12 +587,10 @@ footer {
 .about .container p,
 .services ul li,
 .work ul li,
-.phone ul li, 
-.copyright-section .container p, 
-.copyright-section .container a{
+.phone ul li{
     color: white;
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 14px;
 }
 .social-section ul{
     margin-top: 20px;
@@ -808,13 +796,105 @@ footer {
 #construction{
     position: absolute;
     top: 220px;
-    left: 540px;
+    left: 580px;
     margin-bottom: 13px; /* Adjust this value to control the spacing from the bottom */
     color: #14213d;
     font-size: 12px;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
 }
+
+/*===================================================*/
+
+.checkbox-dropdown,
+.checkbox-dropdowntwo {
+    width: 190px;
+    height: 40px;
+    display: block;
+    margin: 15px auto; /* Center the dropdown */
+    padding: 11px 20px;
+    font-size: 13px;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    background-color: white;
+    color: #14213D;
+    border: 1.5px solid rgb(197, 191, 191); /* Gray border */
+    background-color: #ffffff; /* Light gray background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker gray shadow */
+    z-index: 1; /* Ensure dropdown is above other elements */
+}
+
+.checkbox-dropdown {
+    top: 215px;
+    left: 28px;
+}
+
+.checkbox-dropdowntwo {
+    position: absolute;
+    top: 225px;
+    left: 580px;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkbox-dropdown:after,
+.checkbox-dropdowntwo:after {
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkbox-dropdown.is-active:after,
+.checkbox-dropdowntwo.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; /* align the dropdown right below the dropdown text */
+    border: inherit;
+    border-top: none;
+    left: -1px; /* align the dropdown to the left */
+    right: -1px; /* align the dropdown to the right */
+    background-color: white; /* Set background color to white */
+    display: none; /* hide the dropdown initially */
+    height: 100px;
+    overflow: auto; /* Use 'auto' to allow scrolling when needed */
+    overflow-x: hidden;
+    z-index: 2; /* Ensure dropdown list is above other elements */
+}
+
+.is-active .checkbox-dropdown-list {
+    display: block; /* display the dropdown when active */
+}
+
+.checkbox-dropdown-list li label {
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 10px;
+    transition: all 0.2s ease-out;
+    color: #14213D;
+}
+
+.checkbox-dropdown-list li label:hover {
+    background-color: #555;
+    color: white;
+}
+
+
+
 #simpleDropdown {
     position: absolute;
     top: 230px;
@@ -1603,7 +1683,8 @@ footer .container {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 40px 50px;
+    padding: 10px 15px;
+
 }
 
 .footer-content {
@@ -1633,11 +1714,11 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-#copyright{
+#copyright {
     width: 100%;
-    background-color: black;
+    background-color: #080E1C;
     color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1694,6 +1775,111 @@ footer .copyright {
   z-index: 100;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .booking-container, .info-container {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.logo-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone-section{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.about,
+.services,
+.work,
+.phone {
+    position: relative;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.about h2{
+    color: white;
+    font-size: 21px;
+    margin-bottom: 10px; 
+}
+.services h2,
+.work h2,
+.copyright p,
+.copyright a {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.about p,
+.services ul,
+.work ul,
+.phone p {
+    color: white;
+}
+
+.about ul,
+.services ul,
+.work ul,
+.phone ul {
+    list-style: none;
+    padding: 0;
+}
+.about p{
+    margin-top: 20px;
+}
+.about .container p,
+.services ul li,
+.work ul li{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.social-section ul{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.phone ul li{
+    color: white;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.phone .container h2{
+    color: orange;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.footer-container .container{
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.footer-container .container p{
+    margin-top: 20px;
+}
+.footer-hr{
+    width: 30%;
+    margin: 0px 100px 20px 0;
+    border: 1px solid orange;
+}
+
 /* Media Queries */
 @media screen and (max-width: 768px) {
     * {
@@ -1721,6 +1907,7 @@ footer .copyright {
     .footer-content > div {
         min-width: 100%;
     }
+
     .footer-content p,
     .footer-content div ul li a{
     font-size: 11px;
