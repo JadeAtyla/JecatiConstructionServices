@@ -202,7 +202,12 @@ select option::after{
     display: flex;
     justify-content: space-between;
 }
-.top-buttons button{
+.top-buttons .button-group{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.top-buttons .button-group button{
     background-color: #007BFF;
     color: white;
     border: none;
@@ -210,8 +215,15 @@ select option::after{
     border-radius: 4px;
     cursor: pointer;
 }
-.top-buttons button:active {
+.top-buttons .button-group button:active {
     transform: scale(0.9);
+}
+#dropService{
+    background-color: tomato;
+}
+#confirmDrop{
+    display: none;
+    background-color: lightslategray;
 }
 #popUpAdd {
     background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */

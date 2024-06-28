@@ -69,23 +69,25 @@
                     </thead>
                     <tbody>
                         <% admin.forEach((row, index)=> { %>
-                            <tr>
-                                <td>
-                                    <%= index + 1 %>
-                                </td>
-                                <td>
-                                    <%= row.fullname %>
-                                </td>
-                                <td>
-                                    <%= row.email %>
-                                </td>
-                                <td>
-                                    <%= row.startingDate %>
-                                </td>
-                                <td>
-                                    <%= row.endDate %>
-                                </td>
-                            </tr>
+                            <% if (row.verified) { %>
+                                <tr>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td>
+                                        <%= row.fullname %>
+                                    </td>
+                                    <td>
+                                        <%= row.email %>
+                                    </td>
+                                    <td>
+                                        <%= row.startingDate %>
+                                    </td>
+                                    <td>
+                                        <%= row.endDate %>
+                                    </td>
+                                </tr>
+                            <% } %>
                             <% }) %>
                     </tbody>
                 </table>
@@ -165,11 +167,15 @@
                 <option value="Sort By Descending Order">Sort By Descending Order</option>
                 <option value="Sort By Ascending Order">Sort By Ascending Order</option>
             </select>
+            <div class="button-group">
             <button id="addService" onclick="window.location.href='/admin/add-edit-service/'">+ Add Service</button>
+            <button id="dropService">- Drop Service</button>
+            <button id="confirmDrop">Confirm Drop</button>
+            </div>
         </div>
         <div style="overflow-x: auto;">
             <% if (services && services.length > 0) { %>
-                <table id="transaction-table">
+                <table id="service-table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -183,17 +189,19 @@
                     </thead>
                     <tbody>
                         <% services.forEach((row, index) => { %>
-                            <tr>
-                                <td><%= index + 1 %></td>
-                                <td><%= row.category %></td>
-                                <td><%= row.unit %></td>
-                                <td><%= row.price %></td>
-                                <td><%= row.addedDate %></td>
-                                <td><%= row.availability %></td>
-                                <td>
-                                    <a href="/admin/add-edit-service/<%= row._id %>">Edit</a>
-                                </td>
-                            </tr>
+                            <% if (!row.deleted) { %>
+                                <tr>
+                                    <td id="<%= row.unit %>"><%= index + 1 %></td>
+                                    <td><%= row.category %></td>
+                                    <td><%= row.unit %></td>
+                                    <td><%= row.price %></td>
+                                    <td><%= row.addedDate %></td>
+                                    <td><%= row.availability %></td>
+                                    <td>
+                                        <a href="/admin/add-edit-service/<%= row._id %>">Edit</a>
+                                    </td>
+                                </tr>
+                            <% } %>
                         <% }) %>
                     </tbody>
                 </table>
@@ -203,6 +211,8 @@
         </div>
     </div>
 </body>
-<script src="/js/admin.js"></script>
+<script src="/js/admin.js">
+   
+</script>
 
 </html>

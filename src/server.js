@@ -10,6 +10,7 @@ const moment = require('moment-timezone');
 const fs = require('fs');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 //current time in manila/ph
 const dateNow = moment().tz('Asia/Manila').format('YYYY-MM-DD HH:mm:ss');
@@ -387,7 +388,7 @@ app.get("/admin/add-edit-transaction/:id?", async (req, res) => {
     }
 });
 
-/// POST route to add or edit a transaction
+// POST route to add or edit a transaction
 app.post("/admin/add-edit-transaction/:id", async (req, res) => {
     try {
         const transactionId = req.params.id;
@@ -461,6 +462,24 @@ app.get("/admin/getData", async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" }); // Return a 500 error response
     }
 });
+
+app.post("/admin/drop-services", async (req, res) => {
+    try {
+      const { unit } = req.body;
+  
+      if (unit) {
+        // Mark services for deletion
+        console.log(unit);
+        await Services.updateMany({ unit: { $in: unit } }, { $set: { deleted: true } }).exec();
+        res.status(200).json({ message: 'Services marked for deletion successfully' });
+      } else {
+        res.status(400).json({ error: 'No service IDs provided' });
+      }
+    } catch (error) {
+      console.error('Error marking services for deletion:', error);
+      res.status(500).json({ error: 'Internal server error', message: error.message });
+    }
+  });
 
 const port = process.env.port || 5600;
 app.listen(port, () => {

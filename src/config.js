@@ -74,6 +74,9 @@ const servicesSchema = new mongoose.Schema({
         type: Date,
         default: dateNow,
         required: true
+    },
+    deleted:{
+        type: Boolean
     }
 });
 
