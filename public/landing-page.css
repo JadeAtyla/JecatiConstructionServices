@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 /* Header */
@@ -883,12 +884,23 @@ margin-left: 30px;
     color: white;
     padding: 20px;
 }
+#request-quote .sub-container h2{
+
+    font-size: 30px;
+    font-weight: bolder;
+
+}
+
+
 #request-quote .sub-container button{
-    padding: 15px 30px;
-    border-radius: 15px;
+    padding: 15px 20px;
+    border-radius: 10px;
     color: #14213D;
     background-color: orange;
     font-weight: bold;
+    font-size: 19px; /* Adjusted text size */
+    border: 3px solid #fca311;
+    
 }
 #request-quote .sub-container button:hover{
     transform: scale(1.1);
@@ -983,8 +995,15 @@ margin-left: 30px;
 #accomplishments .container .text-container h3{
     font-size: 32px;
 }
-#accomplishments .container .text-container .orange-text{
+#accomplishments .container .text-container .orange-text {
     color: orange;
+    text-align: justify;
+    
+}
+
+#accomplishments .container .text-container .white-text {
+    text-align: justify;
+    
 }
 #accomplishments .container .image-section{
     width: 100%;
