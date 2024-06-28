@@ -356,14 +356,14 @@ body {
 
         .wordtfive{
             position: absolute;
-            top: 1780px; /* y coordinate */
+            top: 1820px; /* y coordinate */
             left: 345px   ; /* x coordinate */
             line-height: 1.0;
             margin-bottom: 10px; /* Adjust this value to control the spacing from the bottom */
             color: #ffffff;
             font-size: 40px;
             font-family: 'Inter', sans-serif;
-            font-weight: 820;
+            font-weight: bolder;
         }
        
 
