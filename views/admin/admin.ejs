@@ -25,18 +25,18 @@
     </div>
     <div id="profile" class="content">
         <h1>Edit Profile</h1>
-        <% if (user) { %>
+        <% if (admin) { %>
             <div class="form-group">
                 <label for="profileName">Fullname:</label>
-                <input type="text" id="profileName" value="<%= user.fullname %>">
+                <input type="text" id="profileName" value="<%= admin.fullname %>">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="text" id="email" value="<%= user.email %>">
+                <input type="text" id="email" value="<%= admin.email %>">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <!--input type="password" id="password" value="<%= user.password %>"-->
+                <!--input type="password" id="password" value="<%= admin.password %>"-->
                 <div class="passwords">
                     <input type="password" id="old-password" class="password-field" placeholder="Old Password">
                     <input type="password" id="new-password" class="password-field" placeholder="New Password">
