@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/contact-us.css">
     <link rel="shortcut icon" href="/images/JecatiLogo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is included -->
 </head>
 <body>
     <header>
@@ -196,24 +197,65 @@
         <div id="equipment">Heavy Equipment Rental:</div>
         <div id="construction">Construction:</div>
     
-        <!-- Simple Dropdown -->
-        <select id="simpleDropdown" required>
-            <option value="" disabled selected>PC 20- 1200/ hr</option>
-            <option value="option1">PC 20- 1200/ hr</option>
-            <option value="option2">PC 30- 1200/ hr</option>
-            <option value="option3">PC 150- 1800/ hr</option>
-            <option value="option4">PC 170- 2000/ hr</option>
-            <option value="option5">PC200- 2300/hr</option>
-            <option value="option6">2 Mini dump truck - 2000/trip</option>
-        </select>
+        <div class="checkbox-dropdown">
+            Choose Komatsu
+            <ul class="checkbox-dropdown-list">
+                <li>
+                    <label>
+                        <input type="checkbox" value="PC 20- 1200/ hr" name="equipment" />PC 20- 1200/ hr
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="PC 30- 1200/ hr" name="equipment" />PC 30- 1200/ hr
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="PC 150- 1800/ hr" name="equipment" />PC 150- 1800/ hr
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="PC 170- 2000/ hr" name="equipment" />PC 170- 2000/ hr
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="PC 200- 2300/hr" name="equipment" />PC 200- 2300/hr
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="2 Mini dump truck - 2000/trip" name="equipment" />2 Mini dump truck - 2000/trip
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+          <!-- Simple Dropdown -->
+          <div class="checkbox-dropdowntwo">
+            Choose Services
+            <ul class="checkbox-dropdown-list">
+                <li>
+                    <label>
+                        <input type="checkbox" value="Vejle" name="city" />Labor - 600 to 800/day personnel
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="Horsens" name="city" />Equipment - 30hr down payment
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" value="Kolding" name="city" />Diesel - 2000/day
+                    </label>
+                </li>
+
+            </ul>
+        </div>
     
-        <select id="simpleDropdowntwo" required>
-            <option value="" disabled selected>Labor - 600 to 800</option>
-            <option value="option1">Labor - 600 to 800/day personnel</option>
-            <option value="option2">Equipment - 30hr down payment</option>
-            <option value="option3">Diesel - 2000/day</option>
-        </select>
-        
         <div id="date">Date and Time</div>
         <div id="duration">Duration and Due Date</div>
     

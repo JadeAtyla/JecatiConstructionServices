@@ -17,3 +17,19 @@ function inquireNow(element) {
 function submitInquiry(element) {
   element[0].style.display = 'none';
 }
+
+$(document).ready(function () {
+  $(".checkbox-dropdown").click(function () {
+      $(this).toggleClass("is-active");
+  });
+
+  $(".checkbox-dropdowntwo").click(function () {
+    $(this).toggleClass("is-active");
+});
+
+
+  $(".checkbox-dropdown ul").click(function(e) {
+      e.stopPropagation();
+  });
+});
+
