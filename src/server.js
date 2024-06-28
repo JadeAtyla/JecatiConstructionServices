@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const {Admin, Services, Transaction} = require('./config'); //collections
+const { Admin, Services, Transaction } = require('./config'); //collections
 const nodemailer = require('nodemailer');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
 const moment = require('moment-timezone');
 const fs = require('fs');
@@ -19,7 +20,7 @@ const app = express();
 
 // Converts all data into JSON format
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 // Serve the static files
 app.use(express.static("public"));
@@ -56,27 +57,18 @@ app.get("/pricing", async (req, res) => {
         res.status(500).render('error', { error: "Error fetching Pricing Services" });
     }
 });
+
 //To the adding services page
 app.get("/admin/services", (req, res) => {
-    res.render('admin/add-services.ejs');
+    res.render('admin/add-edit-service');
 });
-
-// fetching all data while rendering page
-app.get("/admin/admin", async (req, res) => {
-    try {
-        const admin = await Admin.find().exec();
-        const transaction = await Transaction.find().exec();
-        const services = await Services.find({}).exec();
-
-        res.render('admin/admin', {
-            transaction: transaction,
-            admin: admin,
-            services: services,
-        });
-    } catch (error) {
-        console.error("Error fetching transactions:", error);
-        res.status(500).render('error', { error: "Error fetching transactions" });
-    }
+// To admin login
+app.get("/admin/login", (req, res) => {
+    res.render("admin/login", {error: null});
+});
+// To admin sign up
+app.get("/admin/signup", (req, res) => {
+    res.render("admin/signup");
 });
 
 
@@ -96,23 +88,23 @@ const transporter = nodemailer.createTransport({
 const mainOptions = {
     from: "jecaticonstructionsevices@gmail.com",
     to: "jecaticonstructionsevices@gmail.com",
-    subject: "Handshake Trial",
+    subject: "Admin Applicant",
     html: ""
 };
 
 
 // this is the functionality for generated emails
 app.post("/send-email", async (req, res) => {
-    try{
+    try {
         transporter.sendMail(mainOptions, function (error, info) {
-            if(error){
+            if (error) {
                 console.log(error);
-            }else{
+            } else {
                 console.log("Sent Succesfully")
             }
         });
 
-    }catch(err){
+    } catch (err) {
         console.error(err);
     }
 
@@ -120,15 +112,19 @@ app.post("/send-email", async (req, res) => {
 });
 
 // this functionality is for signing up as admin
-app.post("/admin-signup", async (req, res) =>{
+app.post("/admin/signup", async (req, res) => {
     const data = {
-        username: req.body.username,
-        password: await bcrypt.hash(req.body.password, 10),
+        email: req.body.email,
+        password: await bcrypt.hash(req.body.confirm, 10),
+        fullname: req.body.fullname,
+        role: "admin",
+        startingDate: dateNow.toString(),
+        endDate: "",
         verified: false,
         verificationToken: uuidv4()
     };
-    
-    const verificationToken = `http://localhost:5600/verify?token=${data.verificationToken}`;    
+
+    const verificationToken = `http://localhost:5600/verify?token=${data.verificationToken}`;
     mainOptions.html = `<!DOCTYPE html>
 <html>
 <head>
@@ -145,8 +141,8 @@ app.post("/admin-signup", async (req, res) =>{
 
     <h3 style="margin-top: 10px;">Applicant Details:</h3>
     <p style="margin-top: 5px;">
-        Name: ${req.body.name}<br>
-        Username: ${req.body.username}<br>
+        Name: ${req.body.fullname}<br>
+        E-mail: ${req.body.email}<br>
         Position: Admin<br>
         Responsibilities: System Management and Produce Services Results
     </p>
@@ -161,10 +157,10 @@ app.post("/admin-signup", async (req, res) =>{
 
     try {
         const userData = await Admin.insertMany(data);
-        transporter.sendMail(mainOptions, function (error, info){
+        transporter.sendMail(mainOptions, function (error, info) {
             if (error) {
-              // pop up for error
-              console.log(error);
+                // pop up for error
+                console.log(error);
             } else {
                 // pop up for verification with username
                 console.log("Success");
@@ -175,7 +171,7 @@ app.post("/admin-signup", async (req, res) =>{
         console.log(error);
     }
 
-    res.redirect('/admin');
+    res.redirect('/admin/login');
 });
 
 // Verify User
@@ -186,14 +182,14 @@ app.get("/verify", async (req, res) => {
     try {
         // Find the user with the verification token
         const user = await Admin.findOne({ verificationToken: token });
-        console.log("User found with token:", user);
+        // console.log("User found with token:", user);
 
         if (!user) {
             return res.status(400).send('Invalid verification token');
         }
         // Mark the user as verified in the database
         await Admin.updateOne({ _id: user._id }, { $set: { verified: true } });
-        console.log("User verified:", user);
+        // console.log("User verified:", user);
 
         res.status(201).send('Account verified successfully');
     } catch (error) {
@@ -201,6 +197,93 @@ app.get("/verify", async (req, res) => {
         res.status(500).send('Error verifying account');
     }
 });
+
+// Session Middleware
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    cookie: { maxAge: 180 * 60 * 1000 } // 3 hours
+}));
+
+// Authenticator Middleware
+const authenticateUser = (req, res, next) => {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/admin/login');
+    }
+};
+
+// Login Route (Using Email and Password)
+app.post("/admin/login", async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await Admin.findOne({ email: email });
+
+        if (!user) {
+            return res.render("admin/login", {error: "Invalid Username"});
+            // return res.status(400).send('Invalid email');
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.render("admin/login", {error: "Invalid Password"});
+        }
+
+        if (!user.verified) {
+            return res.render("admin/login", {error: "Account not verified"});
+        }
+
+        // Set user in session
+        req.session.user = { _id: user._id, email: user.email };
+        res.redirect('/admin/admin');
+
+    } catch (error) {
+        console.error(error);
+        return res.render("admin/login", {error: "Error logging in"});
+        // res.status(500).send('Error logging in');
+    }
+});
+
+// Logout Route
+app.get('/admin/logout', (req, res) => {
+    req.session.destroy(error => {
+        if (error) {
+            console.log(error);
+        }
+        res.redirect("/admin/login");
+    });
+});
+
+// Protected Admin Route
+app.get("/admin/admin", authenticateUser, async (req, res) => {
+    try {
+        const admin = await Admin.find().exec();
+        const transaction = await Transaction.find().exec();
+        const services = await Services.find().exec();
+        let user = null;
+
+        if (req.session.user) {
+            user = await Admin.findById(req.session.user._id).exec();
+        }
+
+        res.render('admin/admin', {
+            transaction: transaction,
+            admin: admin,
+            services: services,
+            user: user
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).render('error', { error: "Error fetching data" });
+    }
+});
+
+// Apply the authenticateUser middleware to all /admin routes
+app.use('/admin', authenticateUser);
 
 const uploadDir = path.join(__dirname, '../public/images/uploads');
 
@@ -211,10 +294,10 @@ if (!fs.existsSync(uploadDir)) {
 
 // Multer disk storage configuration
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, uploadDir);
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         cb(null, file.originalname);
     }
 });
@@ -222,35 +305,67 @@ const storage = multer.diskStorage({
 // Multer upload middleware setup
 const upload = multer({ storage: storage }).single('image');
 
-// Route to handle file upload and form data
-app.post("/add-service", upload, async (req, res) => {
-    const { category, unit, price } = req.body;
-    const dateNow = new Date(); // Assuming dateNow is defined elsewhere
-
-    // Check if file upload was successful
-    if (!req.file) {
-        return res.status(400).json({ error: "Please upload a file." });
-    }
-
-    const service = {
-        category: category,
-        unit: unit,
-        price: price,
-        availability: 'available',
-        addedDate: dateNow,
-        image: req.file.filename
-    };
-
+// GET route to render the add/edit service form
+app.get("/admin/add-edit-service/:id?", async (req, res) => {
     try {
-        if (!category || !unit || !price) {
-            return res.status(400).json({ error: "All fields are required." });
+        let service = null;
+        if (req.params.id) {
+            // Fetch service details for editing
+            service = await Services.findById(req.params.id);
+            if (!service) {
+                return res.status(404).json({ error: "Service not found." });
+            }
+        }
+        res.render("admin/add-edit-service", { service });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// POST route to handle adding or editing services
+app.post("/admin/add-edit-service/:id?", upload, async (req, res) => {
+    try {
+        const { category, unit, price } = req.body;
+        const dateNow = new Date(); // Assuming dateNow is defined elsewhere
+        let service;
+
+        // Check if file upload was successful
+        if (!req.file) {
+            return res.status(400).json({ error: "Please upload a file." });
+        }
+
+        if (req.params.id) {
+            // Update existing service
+            service = await Services.findByIdAndUpdate(req.params.id, {
+                category: category,
+                unit: unit,
+                price: price,
+                availability: 'available',
+                addedDate: dateNow,
+                image: req.file.filename
+            });
+            if (!service) {
+                return res.status(404).json({ error: "Service not found." });
+            }
+            console.log('Service Updated Successfully');
         } else {
-            // Assuming Services is a model or database connection to insert data
-            await Services.insertMany(service);
+            // Add new service
+            service = new Services({
+                category: category,
+                unit: unit,
+                price: price,
+                availability: 'available',
+                addedDate: dateNow,
+                image: req.file.filename
+            });
+            await service.save();
             console.log('Service Added Successfully');
         }
+
+        res.redirect('admin/add-edit-transaction'); // Redirect after successful add/edit
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return res.status(500).json({ error: "Internal Server Error" });
     }
 });
@@ -367,6 +482,6 @@ app.post("/admin/drop-services", async (req, res) => {
   });
 
 const port = process.env.port || 5600;
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log("Server Running on port: ", port);
 });

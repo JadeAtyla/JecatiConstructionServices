@@ -16,7 +16,7 @@ body {
 
 /* Header Styles */
 header .container {
-    width:100%;
+    width: calc(100% - 3px);
     background-color: #14213D;
     display: flex;
     flex-wrap: wrap;
@@ -26,11 +26,11 @@ header .container {
     position: fixed;
     z-index: 100;
     top: 0;
-    border-radius:0 0 20px 20px;;
+    left: 1.25px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px #999;
 }
-
 header .logo img {
     max-height: inherit;
 }
@@ -1288,7 +1288,8 @@ footer .container {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding: 10px 15px;
+    justify-content: space-between;
+    padding: 40px 50px;
 }
 
 .footer-content {
@@ -1318,11 +1319,11 @@ footer .container {
     color: white;
     margin-bottom: 10px;
 }
-#copyright {
+#copyright{
     width: 100%;
-    background-color: #080E1C;
+    background-color: black;
     color: white;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1392,13 +1393,13 @@ footer .copyright {
 }
 
 /* Footer */
-footer .container {
+footer {
     width: 100%;
     background-color: #14213D;
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-top: auto;
 }
 
 .footer-container {
@@ -1415,6 +1416,21 @@ footer .container {
     gap: 20px;
 }
 
+.copyright-section {
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    background-color: #080E1C;
+}
+.copyright-section .container{
+    padding: 20px;
+}
+.copyright-section .container a{
+    text-decoration: none;
+    color: white;
+}
 .phone-section{
     display: flex;
     flex-direction: row;
@@ -1430,17 +1446,13 @@ footer .container {
     padding: 0 20px;
 }
 
-.about h2{
-    color: white;
-    font-size: 21px;
-    margin-bottom: 10px; 
-}
+.about h2,
 .services h2,
 .work h2,
-.copyright p,
-.copyright a {
+.phone h2,
+.copyright p {
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
@@ -1458,15 +1470,16 @@ footer .container {
     list-style: none;
     padding: 0;
 }
-.about p{
-    margin-top: 20px;
-}
+
 .about .container p,
 .services ul li,
-.work ul li{
+.work ul li,
+.phone ul li, 
+.copyright-section .container p, 
+.copyright-section .container a{
     color: white;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 15px;
 }
 .social-section ul{
     margin-top: 20px;
@@ -1474,16 +1487,8 @@ footer .container {
     flex-direction: row;
     gap: 10px;
 }
-.phone ul li{
-    color: white;
-    margin-bottom: 5px;
-    font-size: 15px;
-    font-weight: bold;
-}
 .phone .container h2{
     color: orange;
-    font-size: 17px;
-    margin-bottom: 20px;
 }
 
 .footer-container .container{
@@ -1496,7 +1501,7 @@ footer .container {
 }
 .footer-hr{
     width: 30%;
-    margin: 0px 100px 20px 0;
+    margin: 20px 0 20px 0;
     border: 1px solid orange;
 }
 
