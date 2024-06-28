@@ -197,7 +197,7 @@ app.get("/verify", async (req, res) => {
     }
 });
 
-//middleware for session
+// Session Middleware
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -206,45 +206,39 @@ app.use(session({
     cookie: { maxAge: 180 * 60 * 1000 } // 3 hours
 }));
 
-// Authenticator for security purpose
+// Authenticator Middleware
 const authenticateUser = (req, res, next) => {
     if (req.session.user) {
-        // If user is authenticated, proceed to next middleware or route handler
         next();
     } else {
-        // If user is not authenticated, redirect to login page or send 401 Unauthorized
         res.redirect('/admin/login');
     }
 };
 
-let userAdmin = "";
-
-
-// Login User
+// Login Route (Using Email and Password)
 app.post("/admin/login", async (req, res) => {
-    const { username, password } = req.body;
-    userAdmin = { username: username };
+    const { email, password } = req.body;
     try {
-        const user = await Admin.findOne({ name: username });
+        const user = await Admin.findOne({ email: email });
 
         if (!user) {
-            return res.status(400).send('Invalid username');
-        } else {
-            const isMatch = await bcrypt.compare(password, user.password);
-
-            if (!isMatch) {
-                return res.status(400).send('Invalid password');
-            } else {
-                if (!user.verified) {
-                    return res.status(400).send('Please verify your account before logging in');
-                } else {
-                    // Set user in session
-                    req.session.user = user;
-                    process.env.SESSION_SECRET = user.verificationToken;
-                    res.redirect('/admin/admin');
-                }
-            }
+            return res.status(400).send('Invalid email');
         }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).send('Invalid password');
+        }
+
+        if (!user.verified) {
+            return res.status(400).send('Please verify your account before logging in');
+        }
+
+        // Set user in session
+        req.session.user = { _id: user._id, email: user.email };
+        userAdmin = user._id; // Set userAdmin to the authenticated user's ID
+        res.redirect('/admin/admin');
 
     } catch (error) {
         console.error(error);
@@ -252,7 +246,8 @@ app.post("/admin/login", async (req, res) => {
     }
 });
 
-app.use('/admin/logout', (req, res) => {
+// Logout Route
+app.get('/admin/logout', (req, res) => {
     req.session.destroy(error => {
         if (error) {
             console.log(error);
@@ -261,6 +256,32 @@ app.use('/admin/logout', (req, res) => {
     });
 });
 
+// Protected Admin Route
+app.get("/admin/admin", authenticateUser, async (req, res) => {
+    try {
+        const admin = await Admin.find().exec();
+        const transaction = await Transaction.find().exec();
+        const services = await Services.find().exec();
+        let user = "";
+
+        if (userAdmin) {
+            user = await Admin.findById(userAdmin).exec();
+        }
+
+        res.render('admin/admin', {
+            transaction: transaction,
+            admin: admin,
+            services: services,
+            user: user
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).render('error', { error: "Error fetching data" });
+    }
+});
+
+// Apply the authenticateUser middleware to all /admin routes
+app.use('/admin', authenticateUser);
 
 const uploadDir = path.join(__dirname, '../public/images/uploads');
 
@@ -365,27 +386,8 @@ app.get("/admin/add-edit-transaction/:id?", async (req, res) => {
     }
 });
 
-// Login route
-app.post('/admin/login', async (req, res) => {
-    try {
-        const { username, password } = req.body;
-        const user = await Admin.findOne({ username }).exec();
-        if (!user ||!(await user.comparePassword(password))) {
-            return res.status(401).render('error', { error: 'Invalid username or password' });
-        }
-
-        req.session.user = user._id;
-        userAdmin = user._id; // Set userAdmin to the authenticated user's ID
-
-        res.redirect('/admin/admin');
-    } catch (error) {
-        console.error("Error logging in:", error);
-        res.status(500).render('error', { error: "Error logging in" });
-    }
-});
-
 /// POST route to add or edit a transaction
-app.post("/admin/add-edit-transaction/:id", authenticateUser, async (req, res) => {
+app.post("/admin/add-edit-transaction/:id", async (req, res) => {
     try {
         const transactionId = req.params.id;
         let transaction;
@@ -444,29 +446,6 @@ app.post("/admin/add-edit-transaction/:id", authenticateUser, async (req, res) =
     } catch (error) {
         console.error("Error adding or editing transaction:", error);
         res.status(500).json({ error: "Error adding or editing transaction: " + error.message });
-    }
-});
-
-// fetching all data while rendering page
-app.get("/admin/admin", authenticateUser, async (req, res) => {
-    try {
-        const admin = await Admin.find().exec();
-        const transaction = await Transaction.find().exec();
-        const services = await Services.find().exec();
-        let user = "";
-        if (userAdmin) {
-            user = await Admin.findOne(userAdmin).exec();
-        }
-
-        res.render('admin/admin', {
-            transaction: transaction,
-            admin: admin,
-            services: services,
-            user: user
-        });
-    } catch (error) {
-        console.error("Error fetching transactions:", error);
-        res.status(500).render('error', { error: "Error fetching transactions" });
     }
 });
 
