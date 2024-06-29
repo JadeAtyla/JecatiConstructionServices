@@ -272,6 +272,89 @@
         <button id="submitBtn">Submit</button>
         <button id="cancelBtn">Cancel</button>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const popup = document.getElementsByClassName('popup')[0]; // Get the first popup element
+            const submitInquiryButton = document.getElementsByClassName('submit-inquiry')[0]; // Get the first submit inquiry button
+            const jecati = document.getElementsByClassName('jecati')[0]; // Get the first jecati button
+            const closeBtn = document.getElementById('closeBtn');
+            const cancelBtn = document.getElementById('cancelBtn')
+
+            const gmail = document.getElementById('gmail');
+            const fullname = document.getElementById('fullNameInput'); // Fix: changed 'gmail' to 'fullname'
+            const contactNumber = document.getElementById('contact'); // Fix: changed 'gmail' to 'contactNumber'
+            const services = document.getElementById('services'); // Fix: changed 'gmail' to 'services'
+            const startOfSchedule = document.getElementById('startOfSchedule'); // Fix: changed 'gmail' to 'startOfSchedule'
+            const endOfSchedule = document.getElementById('endOfSchedule'); // Fix: changed 'gmail' to 'endOfSchedule'
+            const location = document.getElementById('location'); // Fix: changed 'gmail' to 'location'
+            const dropLocation = document.getElementById('dropLocation'); // Fix: changed 'gmail' to 'dropLocation'
+
+            closeBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+
+
+            gmail.addEventListener("keyup", () => {
+                fetch("/getData")
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const text = gmail.value;
+                        const { transaction } = data;
+                        const specifyTransaction = transaction.find(transact => transact.email === text);
+
+                        if (specifyTransaction) {
+                            fullname.value = specifyTransaction.contactPerson;
+                            contactNumber.value = specifyTransaction.contactNumber;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            });
+        });
+
+            // Function to post 
+            function postCheckedCheckboxes(transactionId, data) {
+                fetch(`/admin/add-edit-transaction/${transactionId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(responseData => {
+                        console.log('Post response:', responseData);
+                    })
+                    .catch(error => {
+                        console.error('Post error:', error);
+                    });
+            }
+
+            function openPopup(element) {
+                element.style.display = 'block';
+            }
+
+            function closePopup(element) {
+                element.style.display = 'none';
+            }
+
+ 
+    </script>
 
 </body>
 <script type="text/javascript" src="/js/script.js">
