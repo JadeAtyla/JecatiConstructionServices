@@ -223,16 +223,14 @@ hr {
     margin-bottom: 15px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.form-group ::placeholder{
+    font-size: 16px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -240,9 +238,11 @@ hr {
 
 .button {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
+    background-color: #FCA311;
+    color: #14213D;
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -250,7 +250,8 @@ hr {
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #14213D;
+    color: white;
 }
 
 /* Rating Styles */
@@ -266,11 +267,11 @@ hr {
 
 /* Information Styles */
 .info-container {
-    padding: 20px;
+    padding: 0px 20px;
 }
 
 .info-container h3, .info-container h2 {
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     font-weight: normal;
 }
 
