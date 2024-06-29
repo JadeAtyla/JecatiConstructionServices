@@ -96,12 +96,16 @@ const transactionSchema = new mongoose.Schema({
     services: [{
         unit:{
             type: String,
-            enum: [],
-            require: true
         },
         quantity:{
             type: Number,
             min: 1
+        }, 
+        category:{
+          type: String
+        },
+        price:{
+          type: Number
         }
     }],
     startingDate: {

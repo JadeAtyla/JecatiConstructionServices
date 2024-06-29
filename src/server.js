@@ -111,6 +111,14 @@ app.post("/send-email", async (req, res) => {
     res.redirect('/contact-us');
 });
 
+app.post("/sendInquiry", async (req, res)=>{
+    try{
+        const transaction = await Transaction.find().exec();
+    }catch(error){
+
+    }
+});
+
 // this functionality is for signing up as admin
 app.post("/admin/signup", async (req, res) => {
     const data = {
@@ -479,6 +487,46 @@ app.post("/admin/drop-services", async (req, res) => {
     } catch (error) {
       console.error('Error marking services for deletion:', error);
       res.status(500).json({ error: 'Internal server error', message: error.message });
+    }
+  });
+
+  app.post('/pushTransaction', async (req, res) => {
+    try {
+      const { fullname, contactNumber, startDate, dueDate, email, services } = req.body;
+      const existingTransactions = await Transaction.find({ email: email }).exec();
+      let existingTransaction;
+  
+      if (existingTransactions.length > 0) {
+        existingTransaction = existingTransactions[0];
+      }
+  
+      if (existingTransaction) {
+        // Update the existing transaction
+        existingTransaction.fullname = fullname;
+        existingTransaction.contactNumber = contactNumber;
+        existingTransaction.startingDate = startDate;
+        existingTransaction.dueDate = dueDate;
+        existingTransaction.email = email;
+        existingTransaction.services = services;
+        await existingTransaction.save();
+      } else {
+        // Create a new transaction document
+        const newTransaction = new Transaction({
+          fullname,
+          contactNumber,
+          startDate,
+          dueDate,
+          email,
+          services,
+        });
+        // Save the transaction to the database
+        await newTransaction.save();
+      }
+  
+      res.status(200).json({ message: 'Transaction saved successfully' });
+    } catch (error) {
+      console.error('Error saving transaction:', error);
+      res.status(500).json({ error: 'Failed to save transaction' });
     }
   });
 
