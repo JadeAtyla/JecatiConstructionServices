@@ -319,7 +319,7 @@ app.get("/admin/add-edit-service/:id?", async (req, res) => {
         res.render("admin/add-edit-service", { service });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: "/admin/add-edit-service/:id?" });
     }
 });
 
@@ -366,7 +366,7 @@ app.post("/admin/add-edit-service/:id?", upload, async (req, res) => {
         res.redirect('admin/add-edit-transaction'); // Redirect after successful add/edit
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ error: "/admin/add-edit-service/:id?" });
     }
 });
 
@@ -384,7 +384,7 @@ app.get("/admin/add-edit-transaction/:id?", async (req, res) => {
         res.render("admin/add-edit-transaction", { transaction });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: "/admin/add-edit-transaction/:id?" });
     }
 });
 
@@ -460,7 +460,7 @@ app.get("/getData", async (req, res) => {
       return res.json({ admin, services, transaction }); // Send the JSON response
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Internal Server Error" }); // Return a 500 error response
+      res.status(500).json({ message: "/getData" }); // Return a 500 error response
     }
   });
 
@@ -478,13 +478,13 @@ app.post("/admin/drop-services", async (req, res) => {
       }
     } catch (error) {
       console.error('Error marking services for deletion:', error);
-      res.status(500).json({ error: 'Internal server error', message: error.message });
+      res.status(500).json({ error: '/admin/drop-services', message: error.message });
     }
   });
 
-// const port = 5600;
-// app.listen(port, () => {
-//     console.log("Server Running on port: ", port);
-// });
+const port = 5600;
+app.listen(port, () => {
+    console.log("Server Running on port: ", port);
+});
 
 module.exports = app;
