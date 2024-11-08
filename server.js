@@ -152,7 +152,7 @@ app.post("/admin/login", async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await Admin.findOne({ email });
-        if (!user) return res.render("admin/login", { error: "Invalid Username" });
+        if (!user) return res.render("admin/login", { error: "Invalid Username 2" });
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.render("admin/login", { error: "Invalid Password" });
