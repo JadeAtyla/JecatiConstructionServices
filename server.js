@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 
 // Import models
-const { Admin, Services, Transaction } = require('./config');
+const { Admin, Services, Transaction } = require('./src/config');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
