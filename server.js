@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const { Admin, Services, Transaction } = require('./config'); //collections
+const { Admin, Services, Transaction } = require('./src/config'); //collections
 const nodemailer = require('nodemailer');
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
@@ -482,9 +482,9 @@ app.post("/admin/drop-services", async (req, res) => {
     }
   });
 
-const port = process.env.port || 5600;
-app.listen(port, () => {
-    console.log("Server Running on port: ", port);
-});
+// const port = process.env.port || 5600;
+// app.listen(port, () => {
+//     console.log("Server Running on port: ", port);
+// });
 
 module.exports = app;
