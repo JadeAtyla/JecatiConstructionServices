@@ -482,7 +482,7 @@ app.post("/admin/drop-services", async (req, res) => {
     }
   });
 
-const port = process.env.port || 5600;
+const port = 5600;
 app.listen(port, () => {
     console.log("Server Running on port: ", port);
 });
