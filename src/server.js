@@ -33,7 +33,7 @@ app.get("/contact-us", (req, res) => {
     res.render('contact-us');
 });
 // To landing page
-app.get("/landing-page", (req, res) => {
+app.get("/", (req, res) => {
     res.render('landing-page');
 });
 // To about us page
@@ -486,3 +486,5 @@ const port = process.env.port || 5600;
 app.listen(port, () => {
     console.log("Server Running on port: ", port);
 });
+
+module.exports = app;
