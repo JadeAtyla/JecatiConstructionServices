@@ -124,7 +124,7 @@ app.post("/admin/signup", async (req, res) => {
         verificationToken: uuidv4()
     };
 
-    const verificationToken = `http://localhost:5600/verify?token=${data.verificationToken}`;
+    // const verificationToken = `http://localhost:5600/verify?token=${data.verificationToken}`;
     mainOptions.html = `<!DOCTYPE html>
 <html>
 <head>
@@ -482,9 +482,9 @@ app.post("/admin/drop-services", async (req, res) => {
     }
   });
 
-const port = 5600;
-app.listen(port, () => {
-    console.log("Server Running on port: ", port);
-});
+// const port = 5600;
+// app.listen(port, () => {
+//     console.log("Server Running on port: ", port);
+// });
 
 module.exports = app;
