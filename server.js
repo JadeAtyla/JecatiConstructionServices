@@ -1,3 +1,4 @@
+try{
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -238,3 +239,6 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+}catch(error){
+    console.log(error)
+}
