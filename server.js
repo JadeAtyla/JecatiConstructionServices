@@ -2,7 +2,7 @@ try{
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
