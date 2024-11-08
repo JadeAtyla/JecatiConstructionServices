@@ -285,7 +285,7 @@ app.get("/admin/admin", authenticateUser, async (req, res) => {
 // Apply the authenticateUser middleware to all /admin routes
 app.use('/admin', authenticateUser);
 
-const uploadDir = path.join(__dirname, '../public/images/uploads');
+const uploadDir = path.join(__dirname, './public/images/uploads');
 
 // Ensure the uploads directory exists
 if (!fs.existsSync(uploadDir)) {
@@ -482,9 +482,9 @@ app.post("/admin/drop-services", async (req, res) => {
     }
   });
 
-// const port = process.env.port || 5600;
-// app.listen(port, () => {
-//     console.log("Server Running on port: ", port);
-// });
+const port = process.env.port || 5600;
+app.listen(port, () => {
+    console.log("Server Running on port: ", port);
+});
 
 module.exports = app;
