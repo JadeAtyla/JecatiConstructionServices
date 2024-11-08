@@ -77,10 +77,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single('image');
 
 // Routes
-app.get("/", (req, res) => res.render('landing-page'));
-app.get("/contact-us", (req, res) => res.render('contact-us'));
-app.get("/about-us", (req, res) => res.render('about-us'));
-app.get("/services", (req, res) => res.render('services'));
+app.get("/", (req, res) => res.render('landing-page.ejs'));
+app.get("/contact-us", (req, res) => res.render('contact-us.ejs'));
+app.get("/about-us", (req, res) => res.render('about-us.ejs'));
+app.get("/services", (req, res) => res.render('services.ejs'));
 app.get("/admin/login", (req, res) => res.render("admin/login", { error: null }));
 app.get("/admin/signup", (req, res) => res.render("admin/signup"));
 
